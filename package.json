@@ -1,0 +1,26 @@
+{
+  "name": "wonderful-cities",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guihtryb/wonderful-cities.git"
+  },
+  "keywords": [],
+  "author": "Guilherme Viana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guihtryb/wonderful-cities/issues"
+  },
+  "homepage": "https://github.com/guihtryb/wonderful-cities#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
