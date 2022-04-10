@@ -8,3 +8,7 @@
 - JEST: Unit Testes
 - JavaScript: DOM Events
 - Writing
+
+<h1>A glimpse</h1>
+
+![Example](assets/example.png)
