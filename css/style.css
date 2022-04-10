@@ -83,7 +83,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
-  color: #222;
+  color: #111;
 }
 
 .cities h2:before {
@@ -93,6 +93,7 @@ body {
   height: 12px;
   margin-right: 10px;
   background: #00565c;
+  border-radius: 20px;
 }
 
 .cities-list {
@@ -121,4 +122,32 @@ body {
 
 .cities-description section {
   margin-bottom: 3rem;
+}
+
+.faq-list {
+  grid-column: 2 / 4;
+}
+
+.faq-list dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.faq-list dt::before {
+  content: '';
+  display: inline-block;
+  height: 10px;
+  width: 20px;
+  margin-right: 10px;
+  background: #00565c;
+  border-radius: 20px;
+}
+
+.faq-list dd {
+  font-family: Helvetica, Arial;
+  margin-bottom: 0.5rem;
+  margin-left: 30px;
 }
