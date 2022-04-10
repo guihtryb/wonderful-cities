@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Playfair+Display+SC&family=Raleway&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -31,7 +32,7 @@ body {
   color: #111;
   display: block;
   padding: 10px;
-  margin-right: 10px;
+  margin: 0 15px;
   text-decoration: none;
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 700;
@@ -44,11 +45,80 @@ body {
   color: #000;
 }
 
-
 .menu ul {
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
 }
 
-/* color: #198 */
+.grid-section {
+  grid-column: 2 / 4;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 90px 300px 1fr;
+  grid-gap: 20px;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: 'Playfair Display SC', georgia;
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  grid-column: 1/4;
+}
+
+.cities p{
+  font-family: Helvetica, Arial, sans-serif ;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.cities h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.cities h2:before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 12px;
+  margin-right: 10px;
+  background: #00565c;
+}
+
+.cities-list {
+  height: 370px;
+  overflow-y: scroll;
+  grid-column: 2;
+}
+
+.cities-list::-webkit-scrollbar {
+  width: 17px;
+}
+
+.cities-list::-webkit-scrollbar-thumb {
+  background: #00565c;
+  border-left: 4px solid #C8D0CB;
+  border-right: 4px solid #C8D0CB;
+}
+
+.cities-list::-webkit-scrollbar-track {
+  background: #C8D0CB;
+}
+
+.cities-description {
+  grid-column: 3;
+}
+
+.cities-description section {
+  margin-bottom: 3rem;
+}
