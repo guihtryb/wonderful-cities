@@ -1,3 +1,54 @@
-h1 {
-  color: #198
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Raleway&display=swap');
+* {
+  margin: 0;
+  padding: 0;
 }
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background: #C8D0CB;
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
+}
+
+.menu {
+  grid-column: 3 / 5;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: #00565c;
+}
+
+.menu a {
+  color: #111;
+  display: block;
+  padding: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
+.menu a:hover {
+  transition: all ease 0.3s;
+  color: #000;
+}
+
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+/* color: #198 */
