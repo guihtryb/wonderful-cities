@@ -27,12 +27,14 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
   background: #00565c;
+  transition: all ease 0.5;
 }
+
 
 .menu a {
   color: #111;
   display: block;
-  padding: 10px;
+  padding: 15px 10px;
   margin: 0 15px;
   text-decoration: none;
   font-family: 'IBM Plex Mono', monospace;
@@ -192,6 +194,73 @@ body {
   letter-spacing: 1px;
 }
 
+.set-darkmode {
+  display: block;
+  grid-column: 1;
+  margin-top: 3.2rem;
+  margin-left: 2rem;
+}
+.dark-mode {
+  background: #000;
+}
+
+.dark-mode p {
+  color: #FFF;
+}
+
+.dark-mode .menu {
+  background: #ff9900;
+}
+
+.dark-mode h1 {
+  color: #b4781d;
+}
+
+.dark-mode h2 {
+  color: #FFF;
+}
+
+.dark-mode h2::before {
+  background: #ff9900;
+}
+
+.dark-mode .cities-list::-webkit-scrollbar-thumb {
+  background: #ff9900;
+  border-left: 4px solid #000;
+  border-right: 4px solid #000;
+}
+
+.dark-mode .cities-list::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.dark-mode .faq-list dt {
+  color: white;
+}
+
+.dark-mode .faq-list dt::before {
+  background: #ff9900;
+}
+
+.dark-mode .faq-list dd {
+  color: #FFF;
+}
+
+.dark-mode .data {
+  color: #FFF;
+}
+
+.dark-mode .data li::before {
+  background: #ff9900;
+}
+
+.dark-mode .copy {
+  background: #ff9900;
+}
+
+.dark-mode .copy p {
+  color: #000;
+}
 @media (max-width : 700px) {
   body {
     grid-template-columns: 1fr;
