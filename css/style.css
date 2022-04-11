@@ -195,13 +195,36 @@ body {
 }
 
 .set-darkmode {
-  display: block;
-  grid-column: 1;
-  margin-top: 3.2rem;
-  margin-left: 2rem;
+  stroke: #00565c;
+  fill: #111;
+  border-radius: 100%;
+  background: #111;
+  cursor: pointer;
+  margin: 12.5px 0;
+  transition: all ease 0.4s;
 }
+
+.set-darkmode:hover {
+  fill: #000;
+  background: #000;
+}
+
 .dark-mode {
   background: #000;
+}
+
+
+
+.dark-mode .set-darkmode {
+  stroke: #ff9900;
+  fill: #c5c2c2;
+  background: #c5c2c2;
+}
+
+.dark-mode .set-darkmode:hover {
+  stroke: #ff9900;
+  fill: #d3dad5;
+  background: #d3d3d3;
 }
 
 .dark-mode p {
