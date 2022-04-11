@@ -12,3 +12,5 @@
 <h1>A glimpse</h1>
 
 ![Example](assets/example.png)
+
+- Available in <a href="https://guihtryb.github.io/wonderful-cities/">this link</a>
