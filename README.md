@@ -6,7 +6,7 @@
 
 - CSS: Grid Layout
 - JEST: Unit Testes
-- JavaScript: DOM Events
+- TypeScript: DOM Events
 - Writing
 
 <h1>A glimpse</h1>
