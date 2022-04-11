@@ -8,6 +8,7 @@
 img {
   display: block;
   max-width: 100%;
+  cursor: pointer;
 }
 
 ul {
@@ -214,8 +215,6 @@ header {
   background: #000;
 }
 
-
-
 .dark-mode .set-darkmode {
   stroke: #ff9900;
   fill: #c5c2c2;
@@ -285,6 +284,16 @@ header {
 .dark-mode .copy p {
   color: #000;
 }
+
+.city-description {
+  display: none;
+}
+
+.active {
+  display: block;
+  animation: show 0.5s forwards;
+}
+
 @media (max-width : 700px) {
   body {
     grid-template-columns: 1fr;
@@ -295,7 +304,7 @@ header {
   }
 
   .grid-section {
-    grid-template-columns: 105px 1fr;
+    grid-template-columns: 205px 1fr;
     grid-gap: 10px;
   }
 
@@ -326,5 +335,16 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
