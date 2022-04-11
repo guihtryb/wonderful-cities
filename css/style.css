@@ -15,11 +15,12 @@ ul {
 }
 
 body {
-  background: #C8D0CB;
+  background: #d3dad5;
   -webkit-font-smoothing: antialiased;
   display: grid;
   grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 }
+
 
 .menu {
   grid-column: 3 / 5;
@@ -75,6 +76,7 @@ body {
   font-family: Helvetica, Arial, sans-serif ;
   line-height: 1.2;
   margin-bottom: 1rem;
+  font-size: 18px;
 }
 
 .cities h2 {
@@ -108,12 +110,12 @@ body {
 
 .cities-list::-webkit-scrollbar-thumb {
   background: #00565c;
-  border-left: 4px solid #C8D0CB;
-  border-right: 4px solid #C8D0CB;
+  border-left: 4px solid #d3dad5;
+  border-right: 4px solid #d3dad5;
 }
 
 .cities-list::-webkit-scrollbar-track {
-  background: #C8D0CB;
+  background: #d3dad5;
 }
 
 .cities-description {
@@ -149,7 +151,7 @@ body {
 .faq-list dd {
   font-family: Helvetica, Arial;
   margin-bottom: 0.5rem;
-  margin-left: 30px;
+  font-size: 18px;
 }
 
 .map {
@@ -163,7 +165,7 @@ body {
 .data li {
   margin-bottom: 1rem;
   font-family: Helvetica, Arial;
-  font-size: 1.05rem;
+  font-size: 1.19rem;
 }
 
 .data li::before {
