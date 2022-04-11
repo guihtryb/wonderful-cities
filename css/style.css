@@ -201,7 +201,7 @@ body {
   background: #111;
   cursor: pointer;
   margin: 12.5px 0;
-  transition: all ease 0.4s;
+  transition: all ease 0.1s;
 }
 
 .set-darkmode:hover {
