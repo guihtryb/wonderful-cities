@@ -8,20 +8,22 @@
   <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
+  <header>
   <nav class="menu">
     <ul>
-        <li><a href="#cities">CITIES</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-        <li><a href="https://guihtryb.github.io/" target="_blank">DEV &#8594; </a></li>
-        <svg width="25" height="25" class="set-darkmode">
-          <circle cx="12.8" cy="12.5" r="8" stroke-width="3" fill="dark"></circle>
-        </svg>
-      </ul>
-    </nav>  
+      <li><a href="#cities">CITIES</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="https://guihtryb.github.io/" target="_blank">DEV &#8594; </a></li>
+    </ul>
+  </nav>
+    <svg width="25" height="25" class="set-darkmode">
+      <circle cx="12.8" cy="12.5" r="8" stroke-width="3" fill="dark"></circle>
+    </svg>
+  </header>
   <section class="grid-section cities" id="cities">
     <h1 class="title"> Wonderful Cities </h1>
-    <ul class="cities-list">
+    <ul class="cities-list js-tabmenu">
       <li>
         <img src="images/singapore.jpg" alt="Marina Bay Sands">
       </li>
@@ -41,8 +43,8 @@
         <img src="images/riga.jpg" alt="Riga city">
       </li>
     </ul>
-    <div class="cities-description">
-      <section>
+    <div class="cities-description js-tabcontent">
+      <section class="city-description">
         <h2>Singapore, Indonesia</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Quia veniam accusantium corporis? Mollitia alias assumenda
@@ -65,7 +67,7 @@
           Nobis eaque tempora beatae sint explicabo?
         </p>
       </section>
-      <section>
+      <section class="city-description">
         <h2>Florianópolis, Brazil</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -92,7 +94,7 @@
           Nobis eaque tempora beatae sint explicabo?
         </p>
       </section>
-      <section>
+      <section class="city-description">
         <h2>Belgrade, Serbia</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -118,7 +120,7 @@
           Nobis eaque tempora beatae sint explicabo?
         </p>
       </section>
-      <section>
+      <section class="city-description">
         <h2>Bali, Indonesia</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -145,7 +147,7 @@
           Nobis eaque tempora beatae sint explicabo?
         </p>
       </section>
-      <section>
+      <section class="city-description">
         <h2>Burgas, Bulgary</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -172,7 +174,7 @@
           Nobis eaque tempora beatae sint explicabo?
         </p>
       </section>
-      <section>
+      <section class="city-description">
         <h2>Riga, Latvia</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
