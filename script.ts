@@ -9,14 +9,13 @@ setDarkModeElement?.addEventListener('click', setDarkMode);
 
 const citiesTabMenu: NodeListOf<Element> | null = document.querySelectorAll('.js-tabmenu li');
 
-const setCityTab = ({ target }: any, index: number) => {
+const setCityTab = (index: number) => {
   const tabContent: NodeListOf<Element> | null = document.querySelectorAll('.city-description');
   tabContent.forEach((section) => section.classList.remove('active'))
   tabContent[index].classList.add('active');
 }
 
 citiesTabMenu?.forEach((city: Element, index) => {
-  city.addEventListener('click', (e) => setCityTab(e, index));
+  city.addEventListener('click', () => setCityTab(index));
 });
-
 
