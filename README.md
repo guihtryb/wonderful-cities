@@ -5,7 +5,7 @@
 <h1>Putting in practice</h1>
 
 - CSS: Grid Layout
-- JEST: Unit Testes
+- Cypress: UI tests
 - TypeScript: DOM Events
 - Writing
 
