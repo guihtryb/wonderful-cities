@@ -8,7 +8,6 @@
 img {
   display: block;
   max-width: 100%;
-  cursor: pointer;
 }
 
 ul {
@@ -108,6 +107,10 @@ header {
   grid-column: 2;
 }
 
+.cities-list img {
+  cursor: pointer;
+}
+
 .cities-list::-webkit-scrollbar {
   width: 17px;
 }
@@ -140,6 +143,7 @@ header {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   color: #111;
+  cursor: pointer;
 }
 
 .faq-list dt::before {
@@ -152,10 +156,28 @@ header {
   border-radius: 20px;
 }
 
+.faq-list dt::after {
+  content: ' ↴';
+  padding-left: 10px;
+}
+
 .faq-list dd {
   font-family: Helvetica, Arial;
   margin-bottom: 0.5rem;
   font-size: 18px;
+}
+
+.faq-description {
+  display: none;
+}
+
+.faq-list dt.opened::after {
+  content: '↥';
+}
+
+.active-accordion {
+  display: block;
+  animation: showFaq 0.6s;
 }
 
 .map {
@@ -265,6 +287,10 @@ header {
   background: #ff9900;
 }
 
+.dark-mode .faq-list dt::after {
+  content: '↴';
+}
+
 .dark-mode .faq-list dd {
   color: #FFF;
 }
@@ -291,7 +317,7 @@ header {
 
 .active {
   display: block;
-  animation: show 0.5s;
+  animation: showCity 0.4s;
 }
 
 @media (max-width : 700px) {
@@ -335,10 +361,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 13px 0;
   }
 }
 
-@keyframes show {
+@keyframes showCity {
   from {
     opacity: 0;
     transform: translate3d(-30px, 0, 0);
@@ -346,5 +373,14 @@ header {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes showFaq {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 50vh;
   }
 }
