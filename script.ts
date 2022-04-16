@@ -24,16 +24,16 @@ const citiesTabEventListener = (): void => {
   });
 }
 
-const setFaqDescription = (index: number): void => {
-  const faqDescriptions = document.querySelectorAll('.faq-description')
-  faqDescriptions[index]?.classList.toggle('active-accordion');
+const setFaqDescription = ({ currentTarget }: any): void => {
+  currentTarget?.classList.toggle('opened');
+  currentTarget.nextElementSibling?.classList.toggle('active-accordion');
 }
 
 const faqTitleEventListener = (): void => {
   const faqDescriptionTitles: NodeListOf<Element> = document.querySelectorAll('.faq-list dt');
 
   faqDescriptionTitles
-    .forEach((dt, index) => dt.addEventListener('click', () => setFaqDescription(index)));
+    .forEach((dt) => dt.addEventListener('click', setFaqDescription));
 }
 
 const init = (): void => {

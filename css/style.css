@@ -156,6 +156,11 @@ header {
   border-radius: 20px;
 }
 
+.faq-list dt::after {
+  content: ' ↴';
+  padding-left: 10px;
+}
+
 .faq-list dd {
   font-family: Helvetica, Arial;
   margin-bottom: 0.5rem;
@@ -166,11 +171,14 @@ header {
   display: none;
 }
 
+.faq-list dt.opened::after {
+  content: '↥';
+}
+
 .active-accordion {
   display: block;
   animation: showFaq 0.5s;
 }
-
 
 .map {
   grid-column: 2;
@@ -279,6 +287,10 @@ header {
   background: #ff9900;
 }
 
+.dark-mode .faq-list dt::after {
+  content: '↴';
+}
+
 .dark-mode .faq-list dd {
   color: #FFF;
 }
@@ -305,7 +317,7 @@ header {
 
 .active {
   display: block;
-  animation: showCity 0.5s;
+  animation: showCity 0.4s;
 }
 
 @media (max-width : 700px) {
