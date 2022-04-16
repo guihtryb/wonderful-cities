@@ -1,17 +1,26 @@
 "use strict";
-var setDarkModeElement = document.querySelector('.set-darkmode');
-var setDarkMode = function () {
-    var pageBody = document.querySelector('body');
+const setDarkMode = function () {
+    const pageBody = document.querySelector('body');
     pageBody === null || pageBody === void 0 ? void 0 : pageBody.classList.toggle('dark-mode');
 };
-setDarkModeElement === null || setDarkModeElement === void 0 ? void 0 : setDarkModeElement.addEventListener('click', setDarkMode);
-var citiesTabMenu = document.querySelectorAll('.js-tabmenu li');
-var setCityTab = function (_a, index) {
-    var target = _a.target;
-    var tabContent = document.querySelectorAll('.city-description');
+const darkModeEventListener = function () {
+    const setDarkModeElement = document.querySelector('.set-darkmode');
+    setDarkModeElement === null || setDarkModeElement === void 0 ? void 0 : setDarkModeElement.addEventListener('click', setDarkMode);
+};
+const setCityTab = function (index) {
+    const tabContent = document.querySelectorAll('.city-description');
     tabContent.forEach(function (section) { return section.classList.remove('active'); });
     tabContent[index].classList.add('active');
 };
-citiesTabMenu === null || citiesTabMenu === void 0 ? void 0 : citiesTabMenu.forEach(function (city, index) {
-    city.addEventListener('click', function (e) { return setCityTab(e, index); });
-});
+const citiesTabEventListener = function () {
+    const citiesTabMenu = document.querySelectorAll('.js-tabmenu li');
+    citiesTabMenu === null || citiesTabMenu === void 0 ? void 0 : citiesTabMenu.forEach(function (city, index) {
+        city.addEventListener('click', function () { return setCityTab(index); });
+    });
+};
+const init = function () {
+    darkModeEventListener();
+    citiesTabEventListener();
+};
+
+window.onload = function () { return init(); };
