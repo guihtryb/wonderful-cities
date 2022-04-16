@@ -35,7 +35,7 @@ var smothScrolling = function (e) {
     var goTo = document.querySelector(href);
     goTo.scrollIntoView({
         behavior: 'smooth',
-        block: 'nearest',
+        block: 'start',
     });
 };
 var setSmoothScrolling = function () {

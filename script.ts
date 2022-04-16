@@ -49,7 +49,7 @@ const smothScrolling = (e: any): void => {
 
   goTo.scrollIntoView({
     behavior: 'smooth',
-    block: 'nearest',
+    block: 'start',
   });
 };
 
