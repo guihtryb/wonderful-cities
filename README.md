@@ -13,4 +13,4 @@
 
 ![Example](assets/example.png)
 
-- Available in <a href="https://guihtryb.github.io/wonderful-cities/">this link</a>
+- Available at <a href="https://guihtryb.github.io/wonderful-cities/">this link</a>
