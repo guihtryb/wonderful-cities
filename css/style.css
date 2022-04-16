@@ -291,6 +291,10 @@ header {
   content: '↴';
 }
 
+.dark-mode .faq-list dt.opened::after {
+  content: '↥';
+}
+
 .dark-mode .faq-list dd {
   color: #FFF;
 }
