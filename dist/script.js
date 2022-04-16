@@ -19,8 +19,8 @@ var citiesTabEventListener = function () {
     });
 };
 var setFaqDescription = function (_a) {
-    var currentTarget = _a.currentTarget;
     var _b;
+    var currentTarget = _a.currentTarget;
     currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.classList.toggle('opened');
     (_b = currentTarget.nextElementSibling) === null || _b === void 0 ? void 0 : _b.classList.toggle('active-accordion');
 };
@@ -29,7 +29,22 @@ var faqTitleEventListener = function () {
     faqDescriptionTitles
         .forEach(function (dt) { return dt.addEventListener('click', setFaqDescription); });
 };
+var smothScrolling = function (e) {
+    e.preventDefault();
+    var href = e.currentTarget.getAttribute('href');
+    var goTo = document.querySelector(href);
+    goTo.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+    });
+};
+var setSmoothScrolling = function () {
+    var internalLinks = document.querySelectorAll('.menu a[href^="#"]');
+    internalLinks.forEach(function (e) { return e.addEventListener('click', smothScrolling); });
+};
+// WIP, function -> if content height > tab images, move last paragraph to outside section
 var init = function () {
+    setSmoothScrolling();
     darkModeEventListener();
     citiesTabEventListener();
     faqTitleEventListener();

@@ -1,5 +1,6 @@
 const setDarkMode = (): void => {
   const pageBody: HTMLElement | null = document.querySelector('body');
+
   pageBody?.classList.toggle('dark-mode');
 };
 
@@ -12,7 +13,9 @@ const darkModeEventListener = (): void => {
 
 const setCityTab = (index: number): void => {
   const tabContent: NodeListOf<Element> | null = document.querySelectorAll('.city-description');
+
   tabContent.forEach((section) => section.classList.remove('active'))
+
   tabContent[index].classList.add('active');
 }
 
@@ -26,6 +29,7 @@ const citiesTabEventListener = (): void => {
 
 const setFaqDescription = ({ currentTarget }: any): void => {
   currentTarget?.classList.toggle('opened');
+
   currentTarget.nextElementSibling?.classList.toggle('active-accordion');
 }
 
@@ -36,12 +40,35 @@ const faqTitleEventListener = (): void => {
     .forEach((dt) => dt.addEventListener('click', setFaqDescription));
 }
 
+const smothScrolling = (e: any): void => {
+  e.preventDefault();
+
+  const href = e.currentTarget.getAttribute('href');
+
+  const goTo: Element = document.querySelector(href);
+
+  goTo.scrollIntoView({
+    behavior: 'smooth',
+    block: 'nearest',
+  });
+};
+
+const setSmoothScrolling = (): void => {
+  const internalLinks: NodeListOf<Element> = document.querySelectorAll('.menu a[href^="#"]');
+
+  internalLinks.forEach((e: Element) => e.addEventListener('click', smothScrolling));
+};
+
+// WIP, function -> if content height > tab images, move last paragraph to outside section
+
 const init = (): void => {
+  setSmoothScrolling();
+  
   darkModeEventListener();
-
+  
   citiesTabEventListener();
-
+  
   faqTitleEventListener();
-}
+};
 
 window.onload = () => init();
