@@ -40,7 +40,7 @@ const faqTitleEventListener = (): void => {
     .forEach((dt) => dt.addEventListener('click', setFaqDescription));
 }
 
-const smothScrolling = (e: any): void => {
+const smoothScrolling = (e: any): void => {
   e.preventDefault();
 
   const href = e.currentTarget.getAttribute('href');
@@ -56,10 +56,34 @@ const smothScrolling = (e: any): void => {
 const setSmoothScrolling = (): void => {
   const internalLinks: NodeListOf<Element> = document.querySelectorAll('.menu a[href^="#"]');
 
-  internalLinks.forEach((e: Element) => e.addEventListener('click', smothScrolling));
+  internalLinks.forEach((e: Element) => e.addEventListener('click', smoothScrolling));
 };
 
 // WIP, function -> if content height > tab images, move last paragraph to outside section
+const getWindowPercentage = (percentage: number) => window.innerHeight * (percentage / 100);
+
+const setScrollAnimation = () => {
+  const jsScrollElements: NodeListOf<Element> = document.querySelectorAll('.js-scroll');
+
+  const windowPercentage = getWindowPercentage(70);
+
+  jsScrollElements.forEach((element) => {
+    const elementToTop = element.getBoundingClientRect().top;
+
+    const elementIsVisible = elementToTop <= windowPercentage;
+
+    if (elementIsVisible)
+      element.classList.add('scroll-active');
+    else
+      element.classList.remove('scroll-active');
+  });
+}
+
+const startScrollAnimation = () => {
+  setScrollAnimation();
+
+  window.addEventListener('scroll', setScrollAnimation)
+}
 
 const init = (): void => {
   setSmoothScrolling();
@@ -69,6 +93,8 @@ const init = (): void => {
   citiesTabEventListener();
   
   faqTitleEventListener();
+
+  startScrollAnimation();
 };
 
 window.onload = () => init();

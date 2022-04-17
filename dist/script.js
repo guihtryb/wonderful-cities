@@ -19,8 +19,8 @@ var citiesTabEventListener = function () {
     });
 };
 var setFaqDescription = function (_a) {
-    var _b;
     var currentTarget = _a.currentTarget;
+    var _b;
     currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.classList.toggle('opened');
     (_b = currentTarget.nextElementSibling) === null || _b === void 0 ? void 0 : _b.classList.toggle('active-accordion');
 };
@@ -29,7 +29,7 @@ var faqTitleEventListener = function () {
     faqDescriptionTitles
         .forEach(function (dt) { return dt.addEventListener('click', setFaqDescription); });
 };
-var smothScrolling = function (e) {
+var smoothScrolling = function (e) {
     e.preventDefault();
     var href = e.currentTarget.getAttribute('href');
     var goTo = document.querySelector(href);
@@ -40,13 +40,31 @@ var smothScrolling = function (e) {
 };
 var setSmoothScrolling = function () {
     var internalLinks = document.querySelectorAll('.menu a[href^="#"]');
-    internalLinks.forEach(function (e) { return e.addEventListener('click', smothScrolling); });
+    internalLinks.forEach(function (e) { return e.addEventListener('click', smoothScrolling); });
 };
 // WIP, function -> if content height > tab images, move last paragraph to outside section
+var getWindowPercentage = function (percentage) { return window.innerHeight * (percentage / 100); };
+var setScrollAnimation = function () {
+    var jsScrollElements = document.querySelectorAll('.js-scroll');
+    var windowPercentage = getWindowPercentage(70);
+    jsScrollElements.forEach(function (element) {
+        var elementToTop = element.getBoundingClientRect().top;
+        var elementIsVisible = elementToTop <= windowPercentage;
+        if (elementIsVisible)
+            element.classList.add('scroll-active');
+        else
+            element.classList.remove('scroll-active');
+    });
+};
+var startScrollAnimation = function () {
+    setScrollAnimation();
+    window.addEventListener('scroll', setScrollAnimation);
+};
 var init = function () {
     setSmoothScrolling();
     darkModeEventListener();
     citiesTabEventListener();
     faqTitleEventListener();
+    startScrollAnimation();
 };
 window.onload = function () { return init(); };
