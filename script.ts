@@ -27,10 +27,10 @@ const citiesTabEventListener = (): void => {
   });
 }
 
-const setFaqDescription = ({ currentTarget }: any): void => {
-  currentTarget?.classList.toggle('opened');
+const setFaqDescription = ({ currentTarget }: Event): void => {
+  (currentTarget as Element)?.classList.toggle('opened');
 
-  currentTarget.nextElementSibling?.classList.toggle('active-accordion');
+  (currentTarget as Element).nextElementSibling?.classList.toggle('active-accordion');
 }
 
 const faqTitleEventListener = (): void => {
@@ -40,17 +40,18 @@ const faqTitleEventListener = (): void => {
     .forEach((dt) => dt.addEventListener('click', setFaqDescription));
 }
 
-const smoothScrolling = (e: any): void => {
+const smoothScrolling = (e: Event): void => {
   e.preventDefault();
 
-  const href = e.currentTarget.getAttribute('href');
+  const href: string | null = (e.target as Element).getAttribute('href');
 
-  const goTo: Element = document.querySelector(href);
-
-  goTo.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
-  });
+  if (href) {
+    const goTo: Element | null = document.querySelector(href);
+    goTo?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
 };
 
 const setSmoothScrolling = (): void => {
