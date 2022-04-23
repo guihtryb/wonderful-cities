@@ -323,13 +323,13 @@ header {
   animation: showCity 0.4s;
 }
 
-.js-scroll {
+[data-animation="scroll"] {
   opacity: 0;
   transition: all ease 0.3s;
   margin-left: -30px;
 }
 
-.js-scroll.scroll-active {
+[data-animation="scroll"].scroll-active {
   opacity: 1;
   margin-left: 0;
 }
