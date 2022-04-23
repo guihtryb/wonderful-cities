@@ -12,7 +12,7 @@ const darkModeEventListener = (): void => {
 
 
 const setCityTab = (index: number): void => {
-  const tabContent: NodeListOf<Element> | null = document.querySelectorAll('.city-description');
+  const tabContent: NodeListOf<Element> | null = document.querySelectorAll('[data-set="content"] section');
 
   tabContent.forEach((section) => section.classList.remove('active'))
 
@@ -20,7 +20,7 @@ const setCityTab = (index: number): void => {
 }
 
 const citiesTabEventListener = (): void => {
-  const citiesTabMenu: NodeListOf<Element> | null = document.querySelectorAll('.js-tabmenu li');
+  const citiesTabMenu: NodeListOf<Element> | null = document.querySelectorAll('[data-set="tab"] li');
 
   citiesTabMenu?.forEach((city: Element, index) => {
     city.addEventListener('click', () => setCityTab(index));
@@ -64,7 +64,7 @@ const setSmoothScrolling = (): void => {
 const getWindowPercentage = (percentage: number) => window.innerHeight * (percentage / 100);
 
 const setScrollAnimation = () => {
-  const jsScrollElements: NodeListOf<Element> = document.querySelectorAll('.js-scroll');
+  const jsScrollElements: NodeListOf<Element> = document.querySelectorAll('[data-animation="scroll"]');
 
   const windowPercentage = getWindowPercentage(70);
 
