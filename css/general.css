@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Playfair+Display+SC&family=Raleway&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background: #d3dad5;
+  -webkit-font-smoothing: antialiased;
+  display: grid;
+  grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
+}
+
+header {
+  display: flex;
+  grid-column: 3 / 5;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: #00565c;
+  transition: all ease 0.5;
+  align-items: center;
+}
+
+.menu a {
+  color: #111;
+  display: block;
+  padding: 15px 10px;
+  margin: 0 15px;
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
+.menu a:hover {
+  transition: all ease 0.3s;
+  color: #000;
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.grid-section {
+  grid-column: 2 / 4;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 90px 300px 1fr;
+  grid-gap: 20px;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-family: 'Playfair Display SC', georgia;
+  font-size: 5rem;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  grid-column: 1/4;
+}
+
+.cities p, [data-section="extra-content"] p{
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+
+.cities h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.cities h2:before {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 12px;
+  margin-right: 10px;
+  background: #00565c;
+  border-radius: 20px;
+}
+
+.cities-list {
+  height: 370px;
+  overflow-y: scroll;
+  grid-column: 2;
+}
+
+.cities-list img {
+  cursor: pointer;
+}
+
+.cities-list::-webkit-scrollbar {
+  width: 17px;
+}
+
+.cities-list::-webkit-scrollbar-thumb {
+  background: #00565c;
+  border-left: 4px solid #d3dad5;
+  border-right: 4px solid #d3dad5;
+}
+
+.cities-list::-webkit-scrollbar-track {
+  background: #d3dad5;
+}
+
+.cities-description {
+  grid-column: 3;
+}
+
+[data-section="extra-content"] {
+  margin-bottom: 4rem;
+  margin-top: -50px;
+  grid-column: 3;
+}
+
+[data-section="extra-content"] p {
+  margin-bottom: 15px;
+}
+
+.faq-list {
+  grid-column: 2 / 4;
+}
+
+.faq-list dt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+  cursor: pointer;
+}
+
+.faq-list dt::before {
+  content: '';
+  display: inline-block;
+  height: 10px;
+  width: 20px;
+  margin-right: 10px;
+  background: #00565c;
+  border-radius: 20px;
+}
+
+.faq-list dt::after {
+  content: ' ↴';
+  padding-left: 10px;
+}
+
+.faq-list dd {
+  font-family: Helvetica, Arial;
+  margin-bottom: 0.5rem;
+  font-size: 18.5px;
+}
+
+.faq-description {
+  display: none;
+}
+
+.faq-list dt.opened::after {
+  content: '↥';
+}
+
+.active-accordion {
+  display: block;
+  animation: showFaq 0.6s;
+}
+
+.map {
+  grid-column: 2;
+}
+
+.data {
+  grid-column: 3;
+}
+
+.data li {
+  margin-bottom: 1rem;
+  font-family: Helvetica, Arial;
+  font-size: 1.19rem;
+}
+
+.data li::before {
+  border-radius: 20px;
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+  background: #00565c;
+}
+
+.copy {
+  grid-column: 3 / 5;
+  margin-bottom: 2rem;
+  background: #00565c;
+  padding: 20px;
+}
+
+.copy p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  margin: 8px 0;
+  letter-spacing: 1px;
+}
+
+.city-description {
+  display: none;
+}
+
+.active {
+  display: block;
+  animation: showCity 0.4s;
+}
+
+[data-animation="scroll"] {
+  opacity: 0;
+  transition: all ease 0.3s;
+  margin-left: -30px;
+}
+
+[data-animation="scroll"].scroll-active {
+  opacity: 1;
+  margin-left: 0;
+}
+
+
+
+@keyframes showCity {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes showFaq {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 50vh;
+  }
+}
