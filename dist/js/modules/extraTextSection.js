@@ -32,32 +32,39 @@ const getElementHeight = (element) => {
     return height;
 };
 export const setExtraParagraph = () => {
-    const tabNav = document.querySelector('[data-set="tab"]');
-    const activeCitySection = document.querySelector('[data-set="content"] section.active');
+    const tabNav = document
+        .querySelector('[data-set="tab"]');
+    const activeCitySection = document
+        .querySelector('[data-set="content"] section.active');
     const activeCitySectionHeight = getElementHeight(activeCitySection);
     const tabNavHeight = getElementHeight(tabNav);
-    const activeCitySectionChildrenLength = activeCitySection
-        .children.length;
-    const citySectionIsBigger = activeCitySectionHeight > (tabNavHeight + 60);
+    const activeCitySectionChildrenLength = activeCitySection.children.length;
+    const citySectionIsBigger = activeCitySectionHeight
+        > (tabNavHeight + 60);
     const activeCitySectionHasMoreThanOneChild = activeCitySectionChildrenLength > 1;
     if (citySectionIsBigger && activeCitySectionHasMoreThanOneChild) {
-        const biggerQuantity = Math.ceil(activeCitySectionHeight / tabNavHeight);
+        const biggerQuantity = Math
+            .ceil(activeCitySectionHeight / tabNavHeight);
         let index = 0;
         while (index < biggerQuantity) {
             index += 1;
             createExtraParagraph();
         }
     }
-    const firstExtraParagraph = document.querySelector('[data-section="extra-content"] p');
+    const firstExtraParagraph = document
+        .querySelector('[data-section="extra-content"] p');
     const firstExtraParagraphHeight = getElementHeight(firstExtraParagraph);
-    const isAbleToBringParagraphBack = (firstExtraParagraphHeight + 45) < (tabNavHeight - activeCitySectionHeight);
+    const isAbleToBringParagraphBack = (firstExtraParagraphHeight + 45)
+        < (tabNavHeight - activeCitySectionHeight);
     if (isAbleToBringParagraphBack) {
         removeExtraParagraph();
     }
 };
 export const deleteLastCityExtraSection = () => {
-    const activeCitySection = document.querySelector('[data-set="content"] section.active');
-    const extraSectionParagraphs = document.querySelectorAll('[data-section="extra-content"] p');
+    const activeCitySection = document
+        .querySelector('[data-set="content"] section.active');
+    const extraSectionParagraphs = document
+        .querySelectorAll('[data-section="extra-content"] p');
     extraSectionParagraphs.forEach((paragraph) => {
         activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(paragraph);
     });
