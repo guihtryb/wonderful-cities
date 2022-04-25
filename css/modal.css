@@ -1,0 +1,31 @@
+.modal-container {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.modal {
+  background: white;
+  border: 10px solid #00565c;
+  box-shadow: 0 0 0 10px white;
+  padding: 40px;
+  position: relative;
+}
+
+.close {
+  border-radius: 50%;
+  border: 1px solid rgb(202, 173, 173);
+  cursor: pointer;
+  height: 65px;
+  position: absolute;
+  right: -35px;
+  top: -45px;
+  width: 65px;
+}
