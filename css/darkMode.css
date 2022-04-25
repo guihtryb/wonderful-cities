@@ -1,0 +1,96 @@
+.set-darkmode {
+  stroke: #00565c;
+  fill: #111;
+  border-radius: 100%;
+  background: #111;
+  cursor: pointer;
+  margin: 12.5px 0;
+  transition: all ease 0.1s;
+}
+
+.set-darkmode:hover {
+  fill: #000;
+  background: #000;
+}
+
+.dark-mode {
+  background: #000;
+}
+
+.dark-mode .set-darkmode {
+  stroke: #ff9900;
+  fill: #c5c2c2;
+  background: #c5c2c2;
+}
+
+.dark-mode .set-darkmode:hover {
+  stroke: #ff9900;
+  fill: #d3dad5;
+  background: #d3d3d3;
+}
+
+.dark-mode p {
+  color: #FFF;
+}
+
+.dark-mode header {
+  background: #ff9900;
+}
+
+.dark-mode h1 {
+  color: #b4781d;
+}
+
+.dark-mode h2 {
+  color: #FFF;
+}
+
+.dark-mode h2::before {
+  background: #ff9900;
+}
+
+.dark-mode .cities-list::-webkit-scrollbar-thumb {
+  background: #ff9900;
+  border-left: 4px solid #000;
+  border-right: 4px solid #000;
+}
+
+.dark-mode .cities-list::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.dark-mode .faq-list dt {
+  color: white;
+}
+
+.dark-mode .faq-list dt::before {
+  background: #ff9900;
+}
+
+.dark-mode .faq-list dt::after {
+  content: '↴';
+}
+
+.dark-mode .faq-list dt.opened::after {
+  content: '↥';
+}
+
+.dark-mode .faq-list dd {
+  color: #FFF;
+}
+
+.dark-mode .data {
+  color: #FFF;
+}
+
+.dark-mode .data li::before {
+  background: #ff9900;
+}
+
+.dark-mode .copy {
+  background: #ff9900;
+}
+
+.dark-mode .copy p {
+  color: #000;
+}
