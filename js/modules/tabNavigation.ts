@@ -1,4 +1,4 @@
-import { deleteLastCityExtraSection, setExtraParagraph } from "./extraTextSection.js";
+import { deleteLastCityExtraSection, controlExtraParagraph } from "./extraTextSection.js";
 
 const setCityTab = (index: number): void => {
   const tabContent: NodeListOf<Element> | null = document.querySelectorAll('[data-set="content"] section');
@@ -15,7 +15,7 @@ const citiesTabEventListener = (): void => {
     city.addEventListener('click', () => {
       deleteLastCityExtraSection();
       setCityTab(index);
-      setExtraParagraph();
+      controlExtraParagraph();
     });
   });
 };
