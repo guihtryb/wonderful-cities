@@ -1,17 +1,18 @@
 const createExtraParagraph = () => {
     const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const extraSection = document.querySelector('[data-section="extra-content"]');
+    const extraSectionFirstP = document.querySelector('[data-section="extra-content"] p');
     const citiesSection = document.querySelector('#cities');
-    const extraSectionParagraph = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.lastElementChild;
+    const extraSectionNewP = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.lastElementChild;
     if (!extraSection) {
         const newSection = document.createElement('section');
         newSection.dataset['section'] = 'extra-content';
         newSection.dataset['animation'] = 'scroll';
         citiesSection === null || citiesSection === void 0 ? void 0 : citiesSection.after(newSection);
-        newSection.appendChild(extraSectionParagraph);
+        newSection.appendChild(extraSectionNewP);
         return;
     }
-    extraSectionParagraph && (extraSection === null || extraSection === void 0 ? void 0 : extraSection.appendChild(extraSectionParagraph));
+    extraSectionNewP && extraSection.insertBefore(extraSectionNewP, extraSectionFirstP);
 };
 const removeExtraParagraph = () => {
     const activeCitySection = document.querySelector('[data-set="content"] section.active');
@@ -24,25 +25,32 @@ const removeExtraParagraph = () => {
     }
     activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(firstParagraph);
 };
+const getElementHeight = (element) => {
+    if (!element)
+        return 0;
+    const height = element.getBoundingClientRect().height;
+    return height;
+};
 export const setExtraParagraph = () => {
     const tabNav = document.querySelector('[data-set="tab"]');
     const activeCitySection = document.querySelector('[data-set="content"] section.active');
-    const activeCitySectionHeight = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.getBoundingClientRect().height;
-    const tabNavHeight = tabNav === null || tabNav === void 0 ? void 0 : tabNav.getBoundingClientRect().height;
+    const activeCitySectionHeight = getElementHeight(activeCitySection);
+    const tabNavHeight = getElementHeight(tabNav);
     const activeCitySectionChildrenLength = activeCitySection
         .children.length;
-    const heightsExist = activeCitySectionHeight && tabNavHeight;
-    const citySectionIsBigger = heightsExist
-        && (activeCitySectionHeight > (tabNavHeight + 59));
+    const citySectionIsBigger = activeCitySectionHeight > (tabNavHeight + 60);
     const activeCitySectionHasMoreThanOneChild = activeCitySectionChildrenLength > 1;
     if (citySectionIsBigger && activeCitySectionHasMoreThanOneChild) {
-        createExtraParagraph();
+        const biggerQuantity = Math.ceil(activeCitySectionHeight / tabNavHeight);
+        let index = 0;
+        while (index < biggerQuantity) {
+            index += 1;
+            createExtraParagraph();
+        }
     }
     const firstExtraParagraph = document.querySelector('[data-section="extra-content"] p');
-    const firstExtraParagraphHeight = firstExtraParagraph === null || firstExtraParagraph === void 0 ? void 0 : firstExtraParagraph.getBoundingClientRect().height;
-    const firstExtraParagraphHeightAlsoExist = heightsExist && firstExtraParagraphHeight;
-    const isAbleToBringParagraphBack = firstExtraParagraphHeightAlsoExist
-        && (firstExtraParagraphHeight + 57) < (tabNavHeight - activeCitySectionHeight);
+    const firstExtraParagraphHeight = getElementHeight(firstExtraParagraph);
+    const isAbleToBringParagraphBack = (firstExtraParagraphHeight + 45) < (tabNavHeight - activeCitySectionHeight);
     if (isAbleToBringParagraphBack) {
         removeExtraParagraph();
     }

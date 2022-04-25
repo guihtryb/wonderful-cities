@@ -3,9 +3,11 @@ const createExtraParagraph = () => {
 
   const extraSection = document.querySelector('[data-section="extra-content"]');
 
+  const extraSectionFirstP = document.querySelector('[data-section="extra-content"] p');
+
   const citiesSection = document.querySelector('#cities');
 
-  const extraSectionParagraph = activeCitySection?.lastElementChild;
+  const extraSectionNewP = activeCitySection?.lastElementChild;
   
   if (!extraSection) {
     const newSection = document.createElement('section');
@@ -15,10 +17,11 @@ const createExtraParagraph = () => {
     
     citiesSection?.after(newSection);
     
-    newSection.appendChild(extraSectionParagraph as ChildNode)
+    newSection.appendChild(extraSectionNewP as ChildNode)
     return;
   }
-    extraSectionParagraph && extraSection?.appendChild(extraSectionParagraph);
+
+    extraSectionNewP && extraSection.insertBefore(extraSectionNewP, extraSectionFirstP as Node);
 };
 
 const removeExtraParagraph = ():void => {
@@ -37,40 +40,46 @@ const removeExtraParagraph = ():void => {
   activeCitySection?.appendChild(firstParagraph as ChildNode);
 };
 
+const getElementHeight = (element: Element | null): number => {
+  if (!element) return 0;
+
+  const height = element.getBoundingClientRect().height;
+
+  return height;
+};
+
+
 export const setExtraParagraph = (): void => {
   const tabNav = document.querySelector('[data-set="tab"]');
 
   const activeCitySection = document.querySelector('[data-set="content"] section.active');
 
-  const activeCitySectionHeight = activeCitySection
-    ?.getBoundingClientRect().height;
+  const activeCitySectionHeight = getElementHeight(activeCitySection);
 
-  const tabNavHeight = tabNav
-    ?.getBoundingClientRect().height;
+  const tabNavHeight = getElementHeight(tabNav);
 
   const activeCitySectionChildrenLength = (activeCitySection as HTMLElement)
     .children.length;
 
-  const heightsExist = activeCitySectionHeight && tabNavHeight;
-
-  const citySectionIsBigger = heightsExist
-    && (activeCitySectionHeight > (tabNavHeight + 59));
+  const citySectionIsBigger = activeCitySectionHeight > (tabNavHeight + 60);
 
   const activeCitySectionHasMoreThanOneChild = activeCitySectionChildrenLength > 1;
 
   if (citySectionIsBigger && activeCitySectionHasMoreThanOneChild) {
-    createExtraParagraph();
+    const biggerQuantity = Math.ceil(activeCitySectionHeight / tabNavHeight);
+    let index = 0;
+
+    while(index < biggerQuantity) {
+      index += 1;
+      createExtraParagraph();
+    }
   }
 
   const firstExtraParagraph = document.querySelector('[data-section="extra-content"] p');
 
-  const firstExtraParagraphHeight = firstExtraParagraph
-    ?.getBoundingClientRect().height;
+  const firstExtraParagraphHeight = getElementHeight(firstExtraParagraph);
 
-  const firstExtraParagraphHeightAlsoExist =  heightsExist && firstExtraParagraphHeight;
-
-  const isAbleToBringParagraphBack = firstExtraParagraphHeightAlsoExist 
-    && (firstExtraParagraphHeight + 57) < (tabNavHeight - activeCitySectionHeight);
+  const isAbleToBringParagraphBack = (firstExtraParagraphHeight + 45) < (tabNavHeight - activeCitySectionHeight);
 
   if (isAbleToBringParagraphBack) {
     removeExtraParagraph();
