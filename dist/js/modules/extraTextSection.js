@@ -1,7 +1,6 @@
-// wip - remover data-section="extra" do html (depois de estilizar)
-const activeCitySection = document.querySelector('[data-set="content"] section.active');
 const tabNav = document.querySelector('[data-set="tab"]');
 const createExtraParagraph = () => {
+    const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const extraSection = document.querySelector('[data-section="extra-content"]');
     const citiesSection = document.querySelector('#cities');
     const extraSectionParagraph = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.lastElementChild;
@@ -16,6 +15,7 @@ const createExtraParagraph = () => {
     extraSectionParagraph && (extraSection === null || extraSection === void 0 ? void 0 : extraSection.appendChild(extraSectionParagraph));
 };
 const removeExtraParagraph = () => {
+    const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const extraSection = document.querySelector('[data-section="extra-content"]');
     const firstParagraph = extraSection === null || extraSection === void 0 ? void 0 : extraSection.firstChild;
     if (extraSection && (extraSection === null || extraSection === void 0 ? void 0 : extraSection.children.length) < 2) {
@@ -25,7 +25,8 @@ const removeExtraParagraph = () => {
     }
     activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(firstParagraph);
 };
-const setExtraParagraph = () => {
+export const setExtraParagraph = () => {
+    const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const activeCitySectionHeight = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.getBoundingClientRect().height;
     const tabNavHeight = tabNav === null || tabNav === void 0 ? void 0 : tabNav.getBoundingClientRect().height;
     const activeCitySectionChildrenLength = activeCitySection

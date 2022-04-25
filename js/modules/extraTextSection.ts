@@ -1,8 +1,9 @@
-const activeCitySection = document.querySelector('[data-set="content"] section.active');
 const tabNav = document.querySelector('[data-set="tab"]');
 
 
 const createExtraParagraph = () => {
+  const activeCitySection = document.querySelector('[data-set="content"] section.active');
+
   const extraSection = document.querySelector('[data-section="extra-content"]');
 
   const citiesSection = document.querySelector('#cities');
@@ -24,6 +25,8 @@ const createExtraParagraph = () => {
 };
 
 const removeExtraParagraph = ():void => {
+  const activeCitySection = document.querySelector('[data-set="content"] section.active');
+
   const extraSection = document.querySelector('[data-section="extra-content"]');
 
   const firstParagraph = extraSection?.firstChild;
@@ -37,7 +40,9 @@ const removeExtraParagraph = ():void => {
   activeCitySection?.appendChild(firstParagraph as ChildNode);
 };
 
-const setExtraParagraph = (): void => {
+export const setExtraParagraph = (): void => {
+  const activeCitySection = document.querySelector('[data-set="content"] section.active');
+
   const activeCitySectionHeight = activeCitySection
     ?.getBoundingClientRect().height;
 

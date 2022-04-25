@@ -1,6 +1,6 @@
 const getWindowPercentage = (percentage: number) => window.innerHeight * (percentage / 100);
 
-const setScrollAnimation = () => {
+export const setScrollAnimation = () => {
   const jsScrollElements: NodeListOf<Element> = document.querySelectorAll('[data-animation="scroll"]');
 
   const windowPercentage = getWindowPercentage(70);
@@ -20,7 +20,7 @@ const setScrollAnimation = () => {
 const startScrollAnimation = () => {
   setScrollAnimation();
 
-  window.addEventListener('scroll', setScrollAnimation)
+  window.addEventListener('scroll', setScrollAnimation);
 };
 
 export default startScrollAnimation;
