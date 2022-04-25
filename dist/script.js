@@ -3,12 +3,13 @@ import darkModeEventListener from './js/modules/darkMode.js';
 import setSmoothScrolling from './js/modules/smoothScroll.js';
 import citiesTabEventListener from './js/modules/tabNavigation.js';
 import faqAccordionEventListener from './js/modules/accordion.js';
-// WIP, function -> if content height > tab images, move last paragraph to outside section
+import extraParagraphEventListener from './js/modules/extraTextSection.js';
 const init = () => {
     startScrollAnimation();
     darkModeEventListener();
     setSmoothScrolling();
     citiesTabEventListener();
     faqAccordionEventListener();
+    extraParagraphEventListener();
 };
 window.onload = () => init();
