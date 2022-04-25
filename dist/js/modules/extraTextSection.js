@@ -1,4 +1,3 @@
-const tabNav = document.querySelector('[data-set="tab"]');
 const createExtraParagraph = () => {
     const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const extraSection = document.querySelector('[data-section="extra-content"]');
@@ -26,6 +25,7 @@ const removeExtraParagraph = () => {
     activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(firstParagraph);
 };
 export const setExtraParagraph = () => {
+    const tabNav = document.querySelector('[data-set="tab"]');
     const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const activeCitySectionHeight = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.getBoundingClientRect().height;
     const tabNavHeight = tabNav === null || tabNav === void 0 ? void 0 : tabNav.getBoundingClientRect().height;
@@ -40,13 +40,19 @@ export const setExtraParagraph = () => {
     }
     const firstExtraParagraph = document.querySelector('[data-section="extra-content"] p');
     const firstExtraParagraphHeight = firstExtraParagraph === null || firstExtraParagraph === void 0 ? void 0 : firstExtraParagraph.getBoundingClientRect().height;
-    const firstExtraParagraphHeightAlsoExist = activeCitySectionHeight
-        && tabNavHeight && firstExtraParagraphHeight;
+    const firstExtraParagraphHeightAlsoExist = heightsExist && firstExtraParagraphHeight;
     const isAbleToBringParagraphBack = firstExtraParagraphHeightAlsoExist
         && (firstExtraParagraphHeight + 57) < (tabNavHeight - activeCitySectionHeight);
     if (isAbleToBringParagraphBack) {
         removeExtraParagraph();
     }
+};
+export const deleteLastCityExtraSection = () => {
+    const activeCitySection = document.querySelector('[data-set="content"] section.active');
+    const extraSectionParagraphs = document.querySelectorAll('[data-section="extra-content"] p');
+    extraSectionParagraphs.forEach((paragraph) => {
+        activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(paragraph);
+    });
 };
 const extraParagraphEventListener = () => {
     setExtraParagraph();
