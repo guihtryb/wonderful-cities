@@ -1,4 +1,5 @@
-import { deleteLastCityExtraSection, controlExtraParagraph } from "./extraTextSection.js";
+import { controlExtraParagraph } from "./extraTextSection.js";
+import { deleteLastCityExtraSection } from "../../utils/index.js";
 
 const setCityTab = (index: number): void => {
   const tabContent: NodeListOf<Element> | null = document.querySelectorAll('[data-set="content"] section');
