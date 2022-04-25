@@ -1,105 +1,171 @@
-const createExtraParagraph = (): void => {
-  const activeCitySection: Element | null = document.querySelector('[data-set="content"] section.active');
+import IAbleToCreateExtraParagraph from "../../interfaces/IAbleToCreateExtraParagraph.js";
+import { getElement, getElementHeight, getElements } from "../../utils/index.js";
 
-  const extraSection: Element | null = document.querySelector('[data-section="extra-content"]');
+const createExtraSection = (extraSectionNewP: Element | null | undefined): void => {
+  if (!extraSectionNewP) return;
 
-  const extraSectionFirstP: Element | null = document.querySelector('[data-section="extra-content"] p');
+  const citiesSection: Element | null = getElement('#cities');
+  const newSection: HTMLElement = document.createElement('section');
 
-  const citiesSection: Element | null = document.querySelector('#cities');
+  newSection.dataset['section']= 'extra-content';
+  newSection.dataset['animation']= 'scroll';
 
-  const extraSectionNewP: Element | null | undefined = activeCitySection?.lastElementChild;
-  
+  citiesSection?.after(newSection);
+
+  newSection.appendChild(extraSectionNewP);
+};
+
+const getCitySectionLastParagraph = (): Element | null | undefined => {
+  const activeCitySection: Element | null = getElement('[data-set="content"] section.active');
+
+  const lastParagraph: Element | null | undefined = activeCitySection?.lastElementChild;
+
+  return lastParagraph;
+};
+
+const insertExtraParagraph = (): void => {
+  const extraSection: Element | null = getElement('[data-section="extra-content"]');
+
+  const extraSectionFirstP: Element | null = getElement('[data-section="extra-content"] p');
+
+  const extraParagraph: Element | null | undefined = getCitySectionLastParagraph();
+
   if (!extraSection) {
-    const newSection: HTMLElement = document.createElement('section');
-    
-    newSection.dataset['section']= 'extra-content';
-    newSection.dataset['animation']= 'scroll';
-    
-    citiesSection?.after(newSection);
-    
-    newSection.appendChild(extraSectionNewP as Element)
+    createExtraSection(extraParagraph);
     return;
   }
 
-    extraSectionNewP && extraSection.insertBefore(extraSectionNewP, extraSectionFirstP as Node);
+  extraParagraph && extraSection.insertBefore(extraParagraph, extraSectionFirstP as Node);
+};
+
+const bringExtraParagraphBack = (extraParagraph: ChildNode | null | undefined) => {
+  if (!extraParagraph) return;
+
+  const activeCitySection: Element | null = getElement('[data-set="content"] section.active');
+
+  activeCitySection?.appendChild(extraParagraph);
 };
 
 const removeExtraParagraph = (): void => {
-  const activeCitySection: Element | null = document.querySelector('[data-set="content"] section.active');
-
-  const extraSection: Element | null = document.querySelector('[data-section="extra-content"]');
+  const extraSection: Element | null = getElement('[data-section="extra-content"]');
 
   const firstParagraph: ChildNode | null | undefined = extraSection?.firstChild;
 
-  if (extraSection && extraSection?.children.length < 2) {
-    activeCitySection?.appendChild(firstParagraph as ChildNode);
+  const isExtraSectionUniqueP = extraSection?.children.length === 1;
+
+  if (extraSection && isExtraSectionUniqueP) {
+    bringExtraParagraphBack(firstParagraph);
+
     extraSection.remove();
+
     return;
   }
 
-  activeCitySection?.appendChild(firstParagraph as ChildNode);
+  bringExtraParagraphBack(firstParagraph)
 };
 
-const getElementHeight = (element: Element | null): number => {
-  if (!element) return 0;
-
-  const height: number = element.getBoundingClientRect().height;
-
-  return height;
-};
-
-
-export const setExtraParagraph = (): void => {
-  const tabNav: Element | null = document
-    .querySelector('[data-set="tab"]');
-
-  const activeCitySection: Element | null = document
-    .querySelector('[data-set="content"] section.active');
-
-  const activeCitySectionHeight: number = getElementHeight(activeCitySection);
-
-  const tabNavHeight: number = getElementHeight(tabNav);
-
-  const activeCitySectionChildrenLength: number = (
-    activeCitySection as HTMLElement
-  ).children.length;
+const isAbleToCreateExtraParagraph = (
+  activeCitySectionHeight: number,
+  activeCitySectionChildrenLength: number,
+  tabNavHeight: number,
+  ): IAbleToCreateExtraParagraph => {
 
   const citySectionIsBigger: boolean = activeCitySectionHeight
     > (tabNavHeight + 60);
 
   const activeCitySectionHasMoreThanOneChild: boolean = activeCitySectionChildrenLength > 1;
 
-  if (citySectionIsBigger && activeCitySectionHasMoreThanOneChild) {
-    const biggerQuantity: number = Math
-      .ceil(activeCitySectionHeight / tabNavHeight);
+  const conditions = [
+    citySectionIsBigger,
+    activeCitySectionHasMoreThanOneChild
+  ];
 
-      let index = 0;
+  if (conditions.every((condition) => condition)) return {
+    isAble: true,
+    quantity: calcTimesBigger(activeCitySectionHeight, tabNavHeight),
+  };
 
-    while(index < biggerQuantity) {
-      index += 1;
-      createExtraParagraph();
-    }
-  }
+  return {
+    isAble: false,
+    quantity: 0,
+  };
+};
 
-  const firstExtraParagraph: Element | null = document
-    .querySelector('[data-section="extra-content"] p');
-
-  const firstExtraParagraphHeight: number = getElementHeight(firstExtraParagraph);
-
+const isAbleToBringExtraParagraphBack = (
+  firstExtraParagraphHeight: number,
+  tabNavHeight: number,
+  activeCitySectionHeight: number,
+): boolean => {
   const isAbleToBringParagraphBack: boolean = (firstExtraParagraphHeight + 45)
     < (tabNavHeight - activeCitySectionHeight);
 
-  if (isAbleToBringParagraphBack) {
+  if (isAbleToBringParagraphBack) return true;
+
+  return false;
+};
+
+const calcTimesBigger = (activeCitySectionHeight: number, tabNavHeight: number) => {
+  const howMuchTimesBigger: number = Math
+  .ceil(activeCitySectionHeight / tabNavHeight);
+
+  return howMuchTimesBigger;
+}
+
+const createExtraParagraphs = (quantity: number) => {
+  let index = 0;
+
+  while(index < quantity) {
+    index += 1;
+    insertExtraParagraph();
+  }
+}
+
+export const controlExtraParagraph = (): void => {
+  const tabNav: Element | null = getElement('[data-set="tab"]');
+
+  const activeCitySection: Element | null = getElement('[data-set="content"] section.active');
+
+  const tabNavHeight: number = getElementHeight(tabNav);
+
+  const activeCitySectionHeight: number = getElementHeight(activeCitySection);
+
+  const activeCitySectionChildrenLength: number = (activeCitySection as HTMLElement).children.length;
+
+  const createExtraParagraph: IAbleToCreateExtraParagraph = isAbleToCreateExtraParagraph(
+    activeCitySectionHeight,
+    activeCitySectionChildrenLength,
+    tabNavHeight
+  );
+
+  const firstExtraParagraph: Element | null = getElement(
+    '[data-section="extra-content"] p',
+  );
+
+  const firstExtraParagraphHeight: number = getElementHeight(firstExtraParagraph);
+
+  const ableToBringParagraphBack: boolean = isAbleToBringExtraParagraphBack(
+    firstExtraParagraphHeight,
+    tabNavHeight,
+    activeCitySectionHeight
+  );
+
+  if (createExtraParagraph.isAble) {
+    createExtraParagraphs(createExtraParagraph.quantity);
+  }
+
+  if (ableToBringParagraphBack) {
     removeExtraParagraph();
   }
 };
 
 export const deleteLastCityExtraSection = (): void => {
-  const activeCitySection: Element | null = document
-    .querySelector('[data-set="content"] section.active');
+  const activeCitySection: Element | null = getElement(
+    '[data-set="content"] section.active',
+  );
 
-  const extraSectionParagraphs: NodeListOf<Element> = document
-    .querySelectorAll('[data-section="extra-content"] p');
+  const extraSectionParagraphs: NodeListOf<Element> = getElements(
+    '[data-section="extra-content"] p',
+  );
 
   extraSectionParagraphs.forEach((paragraph) => {
     activeCitySection?.appendChild(paragraph);
@@ -107,9 +173,9 @@ export const deleteLastCityExtraSection = (): void => {
 };
 
 const extraParagraphEventListener = (): void => {
-  setExtraParagraph();
+  controlExtraParagraph();
 
-  window.addEventListener('resize', setExtraParagraph);
+  window.addEventListener('resize', controlExtraParagraph);
 }
 
 export default extraParagraphEventListener;
