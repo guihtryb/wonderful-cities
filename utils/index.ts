@@ -1,15 +1,20 @@
-export const getElement = (selector: string): Element | null => {
-  return document.querySelector(selector);
-};
+import getElement from "./getElement.js";
+import getElements from "./getElements.js";
+import getElementHeight from "./getElementsHeight.js";
 
-export const getElements = (selector: string): NodeListOf<Element> => {
-  return document.querySelectorAll(selector);
-};
+import {
+  calcTimesBigger,
+  isAbleToBringExtraParagraphBack,
+  isAbleToCreateExtraParagraph,
+  deleteLastCityExtraSection,
+} from "./extraSection.js"
 
-export const getElementHeight = (element: Element | null): number => {
-  if (!element) return 0;
-
-  const height: number = element.getBoundingClientRect().height;
-
-  return height;
+export {
+  getElement,
+  getElements,
+  getElementHeight,
+  calcTimesBigger,
+  isAbleToBringExtraParagraphBack,
+  isAbleToCreateExtraParagraph,
+  deleteLastCityExtraSection,
 };
