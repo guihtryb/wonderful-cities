@@ -1,4 +1,4 @@
-import { getElement, getElementHeight, getElements } from "../../utils/index.js";
+import { getElement, getElementHeight, isAbleToBringExtraParagraphBack, isAbleToCreateExtraParagraph } from "../../utils/index.js";
 const createExtraSection = (extraSectionNewP) => {
     if (!extraSectionNewP)
         return;
@@ -41,36 +41,6 @@ const removeExtraParagraph = () => {
     }
     bringExtraParagraphBack(firstParagraph);
 };
-const isAbleToCreateExtraParagraph = (activeCitySectionHeight, activeCitySectionChildrenLength, tabNavHeight) => {
-    const citySectionIsBigger = activeCitySectionHeight
-        > (tabNavHeight + 60);
-    const activeCitySectionHasMoreThanOneChild = activeCitySectionChildrenLength > 1;
-    const conditions = [
-        citySectionIsBigger,
-        activeCitySectionHasMoreThanOneChild
-    ];
-    if (conditions.every((condition) => condition))
-        return {
-            isAble: true,
-            quantity: calcTimesBigger(activeCitySectionHeight, tabNavHeight),
-        };
-    return {
-        isAble: false,
-        quantity: 0,
-    };
-};
-const isAbleToBringExtraParagraphBack = (firstExtraParagraphHeight, tabNavHeight, activeCitySectionHeight) => {
-    const isAbleToBringParagraphBack = (firstExtraParagraphHeight + 45)
-        < (tabNavHeight - activeCitySectionHeight);
-    if (isAbleToBringParagraphBack)
-        return true;
-    return false;
-};
-const calcTimesBigger = (activeCitySectionHeight, tabNavHeight) => {
-    const howMuchTimesBigger = Math
-        .ceil(activeCitySectionHeight / tabNavHeight);
-    return howMuchTimesBigger;
-};
 const createExtraParagraphs = (quantity) => {
     let index = 0;
     while (index < quantity) {
@@ -94,13 +64,6 @@ export const controlExtraParagraph = () => {
     if (ableToBringParagraphBack) {
         removeExtraParagraph();
     }
-};
-export const deleteLastCityExtraSection = () => {
-    const activeCitySection = getElement('[data-set="content"] section.active');
-    const extraSectionParagraphs = getElements('[data-section="extra-content"] p');
-    extraSectionParagraphs.forEach((paragraph) => {
-        activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(paragraph);
-    });
 };
 const extraParagraphEventListener = () => {
     controlExtraParagraph();

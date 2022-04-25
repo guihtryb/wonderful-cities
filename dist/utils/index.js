@@ -1,12 +1,5 @@
-export const getElement = (selector) => {
-    return document.querySelector(selector);
-};
-export const getElements = (selector) => {
-    return document.querySelectorAll(selector);
-};
-export const getElementHeight = (element) => {
-    if (!element)
-        return 0;
-    const height = element.getBoundingClientRect().height;
-    return height;
-};
+import getElement from "./getElement.js";
+import getElements from "./getElements.js";
+import getElementHeight from "./getElementsHeight.js";
+import { calcTimesBigger, isAbleToBringExtraParagraphBack, isAbleToCreateExtraParagraph, deleteLastCityExtraSection, } from "./extraSection.js";
+export { getElement, getElements, getElementHeight, calcTimesBigger, isAbleToBringExtraParagraphBack, isAbleToCreateExtraParagraph, deleteLastCityExtraSection, };

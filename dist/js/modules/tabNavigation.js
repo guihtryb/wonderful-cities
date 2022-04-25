@@ -1,4 +1,5 @@
-import { deleteLastCityExtraSection, controlExtraParagraph } from "./extraTextSection.js";
+import { controlExtraParagraph } from "./extraTextSection.js";
+import { deleteLastCityExtraSection } from "../../utils/index.js";
 const setCityTab = (index) => {
     const tabContent = document.querySelectorAll('[data-set="content"] section');
     tabContent.forEach((section) => section.classList.remove('active'));

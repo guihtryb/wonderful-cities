@@ -1,5 +1,11 @@
 import IAbleToCreateExtraParagraph from "../../interfaces/IAbleToCreateExtraParagraph.js";
-import { getElement, getElementHeight, getElements } from "../../utils/index.js";
+
+import {
+  getElement,
+  getElementHeight,
+  isAbleToBringExtraParagraphBack,
+  isAbleToCreateExtraParagraph
+} from "../../utils/index.js";
 
 const createExtraSection = (extraSectionNewP: Element | null | undefined): void => {
   if (!extraSectionNewP) return;
@@ -64,52 +70,6 @@ const removeExtraParagraph = (): void => {
   bringExtraParagraphBack(firstParagraph)
 };
 
-const isAbleToCreateExtraParagraph = (
-  activeCitySectionHeight: number,
-  activeCitySectionChildrenLength: number,
-  tabNavHeight: number,
-  ): IAbleToCreateExtraParagraph => {
-
-  const citySectionIsBigger: boolean = activeCitySectionHeight
-    > (tabNavHeight + 60);
-
-  const activeCitySectionHasMoreThanOneChild: boolean = activeCitySectionChildrenLength > 1;
-
-  const conditions = [
-    citySectionIsBigger,
-    activeCitySectionHasMoreThanOneChild
-  ];
-
-  if (conditions.every((condition) => condition)) return {
-    isAble: true,
-    quantity: calcTimesBigger(activeCitySectionHeight, tabNavHeight),
-  };
-
-  return {
-    isAble: false,
-    quantity: 0,
-  };
-};
-
-const isAbleToBringExtraParagraphBack = (
-  firstExtraParagraphHeight: number,
-  tabNavHeight: number,
-  activeCitySectionHeight: number,
-): boolean => {
-  const isAbleToBringParagraphBack: boolean = (firstExtraParagraphHeight + 45)
-    < (tabNavHeight - activeCitySectionHeight);
-
-  if (isAbleToBringParagraphBack) return true;
-
-  return false;
-};
-
-const calcTimesBigger = (activeCitySectionHeight: number, tabNavHeight: number) => {
-  const howMuchTimesBigger: number = Math
-  .ceil(activeCitySectionHeight / tabNavHeight);
-
-  return howMuchTimesBigger;
-}
 
 const createExtraParagraphs = (quantity: number) => {
   let index = 0;
@@ -156,20 +116,6 @@ export const controlExtraParagraph = (): void => {
   if (ableToBringParagraphBack) {
     removeExtraParagraph();
   }
-};
-
-export const deleteLastCityExtraSection = (): void => {
-  const activeCitySection: Element | null = getElement(
-    '[data-set="content"] section.active',
-  );
-
-  const extraSectionParagraphs: NodeListOf<Element> = getElements(
-    '[data-section="extra-content"] p',
-  );
-
-  extraSectionParagraphs.forEach((paragraph) => {
-    activeCitySection?.appendChild(paragraph);
-  });
 };
 
 const extraParagraphEventListener = (): void => {
