@@ -8,8 +8,8 @@
   }
 
   .grid-section {
-    grid-template-columns: 205px 1fr;
     grid-gap: 10px;
+    grid-template-columns: 205px 1fr;
   }
 
   .cities-list {
@@ -40,10 +40,10 @@
   }
 
   .copy {
-    margin-bottom: 0;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-bottom: 0;
     padding: 13px 0;
   }
 }

@@ -16,8 +16,8 @@ ul {
 }
 
 body {
-  background: #d3dad5;
   -webkit-font-smoothing: antialiased;
+  background: #d3dad5;
 }
 
 .grid-container {
@@ -26,30 +26,30 @@ body {
 }
 
 header {
+  align-items: center;
+  background: #00565c;
   display: flex;
   grid-column: 3 / 5;
-  margin-top: 2rem;
   margin-bottom: 2rem;
-  background: #00565c;
+  margin-top: 2rem;
   transition: all ease 0.5;
-  align-items: center;
 }
 
 .menu a {
   color: #111;
   display: block;
-  padding: 15px 10px;
-  margin: 0 15px;
-  text-decoration: none;
   font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  font-size: 1rem;
+  margin: 0 15px;
+  padding: 15px 10px;
+  text-decoration: none;
 }
 
 .menu a:hover {
-  transition: all ease 0.3s;
   color: #000;
+  transition: all ease 0.3s;
 }
 
 .menu ul {
@@ -59,55 +59,55 @@ header {
 }
 
 .grid-section {
-  grid-column: 2 / 4;
-  width: 100%;
   box-sizing: border-box;
-  padding: 10px;
   display: grid;
-  grid-template-columns: 90px 300px 1fr;
+  grid-column: 2 / 4;
   grid-gap: 20px;
+  grid-template-columns: 90px 300px 1fr;
   margin-bottom: 4rem;
+  padding: 10px;
+  width: 100%;
 }
 
 .title {
   font-family: 'Playfair Display SC', georgia;
   font-size: 5rem;
-  line-height: 1;
   font-weight: 400;
-  margin-bottom: 1rem;
   grid-column: 1/4;
+  line-height: 1;
+  margin-bottom: 1rem;
 }
 
 .cities p, [data-section="extra-content"] p{
   font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
   line-height: 1.2;
   margin-bottom: 1rem;
-  font-size: 18px;
 }
 
 .cities h2 {
+  color: #111;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
-  color: #111;
+  text-transform: uppercase;
 }
 
 .cities h2:before {
-  content: '';
-  display: inline-block;
-  width: 40px;
-  height: 12px;
-  margin-right: 10px;
   background: #00565c;
   border-radius: 20px;
+  content: '';
+  display: inline-block;
+  height: 12px;
+  margin-right: 10px;
+  width: 40px;
 }
 
 .cities-list {
+  grid-column: 2;
   height: 370px;
   overflow-y: scroll;
-  grid-column: 2;
 }
 
 .cities-list img {
@@ -133,9 +133,9 @@ header {
 }
 
 [data-section="extra-content"] {
+  grid-column: 3;
   margin-bottom: 4rem;
   margin-top: -50px;
-  grid-column: 3;
 }
 
 [data-section="extra-content"] p {
@@ -147,22 +147,22 @@ header {
 }
 
 .faq-list dt {
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
   color: #111;
   cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 
 .faq-list dt::before {
+  background: #00565c;
+  border-radius: 20px;
   content: '';
   display: inline-block;
   height: 10px;
-  width: 20px;
   margin-right: 10px;
-  background: #00565c;
-  border-radius: 20px;
+  width: 20px;
 }
 
 .faq-list dt::after {
@@ -172,8 +172,8 @@ header {
 
 .faq-list dd {
   font-family: Helvetica, Arial;
-  margin-bottom: 0.5rem;
   font-size: 18.5px;
+  margin-bottom: 0.5rem;
 }
 
 .faq-description {
@@ -185,8 +185,8 @@ header {
 }
 
 .active-accordion {
-  display: block;
   animation: showFaq 0.6s;
+  display: block;
 }
 
 .map {
@@ -198,33 +198,33 @@ header {
 }
 
 .data li {
-  margin-bottom: 1rem;
   font-family: Helvetica, Arial;
   font-size: 1.19rem;
+  margin-bottom: 1rem;
 }
 
 .data li::before {
+  background: #00565c;
   border-radius: 20px;
   content: '';
   display: inline-block;
-  width: 20px;
   height: 10px;
   margin-right: 10px;
-  background: #00565c;
+  width: 20px;
 }
 
 .copy {
+  background: #00565c;
   grid-column: 3 / 5;
   margin-bottom: 2rem;
-  background: #00565c;
   padding: 20px;
 }
 
 .copy p {
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 700;
-  margin: 8px 0;
   letter-spacing: 1px;
+  margin: 8px 0;
 }
 
 .city-description {
@@ -232,19 +232,19 @@ header {
 }
 
 .active {
-  display: block;
   animation: showCity 0.4s;
+  display: block;
 }
 
 [data-animation="scroll"] {
+  margin-left: -30px;
   opacity: 0;
   transition: all ease 0.3s;
-  margin-left: -30px;
 }
 
 [data-animation="scroll"].scroll-active {
-  opacity: 1;
   margin-left: 0;
+  opacity: 1;
 }
 
 

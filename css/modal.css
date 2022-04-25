@@ -22,10 +22,18 @@
 .close {
   border-radius: 50%;
   border: 1px solid rgb(202, 173, 173);
+  box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   height: 65px;
   position: absolute;
   right: -35px;
   top: -45px;
   width: 65px;
+}
+
+form label {
+  display: flex;
+  justify-content: space-between;
+  min-width: 23rem;
+  padding: 7px 0;
 }
