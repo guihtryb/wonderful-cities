@@ -1,3 +1,4 @@
+import { setExtraParagraph } from "./extraTextSection.js";
 const setCityTab = (index) => {
     const tabContent = document.querySelectorAll('[data-set="content"] section');
     tabContent.forEach((section) => section.classList.remove('active'));
@@ -6,7 +7,10 @@ const setCityTab = (index) => {
 const citiesTabEventListener = () => {
     const citiesTabMenu = document.querySelectorAll('[data-set="tab"] li');
     citiesTabMenu === null || citiesTabMenu === void 0 ? void 0 : citiesTabMenu.forEach((city, index) => {
-        city.addEventListener('click', () => setCityTab(index));
+        city.addEventListener('click', () => {
+            setCityTab(index);
+            setExtraParagraph();
+        });
     });
 };
 export default citiesTabEventListener;

@@ -40,7 +40,7 @@ const removeExtraParagraph = ():void => {
   activeCitySection?.appendChild(firstParagraph as ChildNode);
 };
 
-const setExtraParagraph = (): void => {
+export const setExtraParagraph = (): void => {
   const activeCitySection = document.querySelector('[data-set="content"] section.active');
 
   const activeCitySectionHeight = activeCitySection

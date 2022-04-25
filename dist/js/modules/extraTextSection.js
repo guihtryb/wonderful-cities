@@ -25,7 +25,7 @@ const removeExtraParagraph = () => {
     }
     activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.appendChild(firstParagraph);
 };
-const setExtraParagraph = () => {
+export const setExtraParagraph = () => {
     const activeCitySection = document.querySelector('[data-set="content"] section.active');
     const activeCitySectionHeight = activeCitySection === null || activeCitySection === void 0 ? void 0 : activeCitySection.getBoundingClientRect().height;
     const tabNavHeight = tabNav === null || tabNav === void 0 ? void 0 : tabNav.getBoundingClientRect().height;
