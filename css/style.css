@@ -129,6 +129,7 @@ header {
 }
 
 [data-section="extra-content"] {
+  margin-bottom: 4rem;
   margin-top: -50px;
   grid-column: 3;
 }
