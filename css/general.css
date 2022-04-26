@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Raleway&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Playfair+Display+SC&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&family=Playfair+Display+SC&family=Raleway&family=Roboto:ital,wght@0,300;0,500;1,400&display=swap');
 
 * {
   margin: 0;
@@ -45,6 +44,7 @@ header {
   margin: 0 15px;
   padding: 15px 10px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .menu a:hover {
@@ -246,8 +246,6 @@ header {
   margin-left: 0;
   opacity: 1;
 }
-
-
 
 @keyframes showCity {
   from {
