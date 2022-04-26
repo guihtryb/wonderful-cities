@@ -4,6 +4,7 @@ import setSmoothScrolling from './js/modules/smoothScroll.js';
 import citiesTabEventListener from './js/modules/tabNavigation.js';
 import faqAccordionEventListener from './js/modules/accordion.js';
 import extraParagraphEventListener from './js/modules/extraTextSection.js';
+import modalEventListener from './js/modules/modal.js';
 const init = () => {
     startScrollAnimation();
     darkModeEventListener();
@@ -11,5 +12,6 @@ const init = () => {
     citiesTabEventListener();
     faqAccordionEventListener();
     extraParagraphEventListener();
+    modalEventListener();
 };
 window.onload = () => init();
