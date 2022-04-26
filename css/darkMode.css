@@ -94,3 +94,55 @@
 .dark-mode .copy p {
   color: #000;
 }
+
+.modal-container {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.dark-mode .modal {
+  background: black;
+  border: 10px solid rgb(17, 17, 17);
+  box-shadow: 0 0 0 10px #ff9900;
+  padding: 40px;
+  position: relative;
+  min-width: 15rem;
+}
+
+.dark-mode .close {
+  background: #ff9900;
+  color: black;
+  border: 8px solid rgb(17, 17, 17);
+}
+
+.dark-mode .modal label {
+  color: white;
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.7rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.dark-mode .modal button[type="submit"] {
+  display: block;
+  background: #ff9900;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: black;
+  margin-top: 1rem;
+  font-weight: 700;
+}
