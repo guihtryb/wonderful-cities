@@ -3,7 +3,7 @@ import getElements from "./getElements.js";
 export const isAbleToCreateExtraParagraph = (activeCitySectionHeight, activeCitySectionChildrenLength, tabNavHeight) => {
     const citySectionIsBigger = activeCitySectionHeight
         > (tabNavHeight + 60);
-    const activeCitySectionHasMoreThanOneChild = activeCitySectionChildrenLength > 1;
+    const activeCitySectionHasMoreThanOneChild = activeCitySectionChildrenLength > 2;
     const conditions = [
         citySectionIsBigger,
         activeCitySectionHasMoreThanOneChild
