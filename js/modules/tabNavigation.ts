@@ -1,5 +1,6 @@
 import { controlExtraParagraph } from "./extraTextSection.js";
 import { deleteLastCityExtraSection } from "../../utils/index.js";
+import { setScrollAnimation } from "./scrollAnimation.js";
 
 const setCityTab = (index: number): void => {
   const tabContent: NodeListOf<Element> | null = document.querySelectorAll('[data-set="content"] section');
@@ -14,6 +15,7 @@ const citiesTabEventListener = (): void => {
 
   citiesTabMenu?.forEach((city: Element, index) => {
     city.addEventListener('click', () => {
+      setScrollAnimation();
       deleteLastCityExtraSection();
       setCityTab(index);
       controlExtraParagraph();
