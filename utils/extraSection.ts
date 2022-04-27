@@ -11,7 +11,7 @@ export const isAbleToCreateExtraParagraph = (
   const citySectionIsBigger: boolean = activeCitySectionHeight
     > (tabNavHeight + 60);
 
-  const activeCitySectionHasMoreThanOneChild: boolean = activeCitySectionChildrenLength > 1;
+  const activeCitySectionHasMoreThanOneChild: boolean = activeCitySectionChildrenLength > 2;
 
   const conditions = [
     citySectionIsBigger,
