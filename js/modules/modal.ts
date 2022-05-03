@@ -1,21 +1,27 @@
 import getElement from "../../utils/getElement.js"
 
-const showModal = (): void => {
+const toggleModal = (e: Event): void => {
+  e.preventDefault();
   const modalContainer = getElement('.modal-container');
-  modalContainer?.classList.add('active-modal');
-}
+  modalContainer?.classList.toggle('active-modal');
+};
 
-const closeModal = (): void => {
-  const modalContainer = getElement('.modal-container');
-  modalContainer?.classList.remove('active-modal');
-}
+const outsideModalClickControl = (e: Event): void => {
+  const outsideModal: Element | null = getElement('.modal-container');
+
+  if (e.target !== outsideModal) return;
+
+  toggleModal(e);
+};
 
 const modalEventListener = ():void => {
-  const loginAnchor: Element | null = getElement('a[data-modal="show"]');
-  const closeElement: Element | null = getElement('button[data-modal="close"]');
-
-  loginAnchor?.addEventListener('click', showModal)
-  closeElement?.addEventListener('click', closeModal)
-}
+  const loginAnchor: Element | null = getElement('[data-modal="show"]');
+  const closeElement: Element | null = getElement('[data-modal="close"]');
+  const outsideModal: Element | null = getElement('.modal-container');
+  
+  loginAnchor?.addEventListener('click', toggleModal);
+  closeElement?.addEventListener('click', toggleModal);
+  outsideModal?.addEventListener('click', outsideModalClickControl);
+};
 
 export default modalEventListener;
