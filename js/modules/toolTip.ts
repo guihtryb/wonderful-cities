@@ -23,28 +23,13 @@ const createToolTip = (element: Element): HTMLDivElement => {
   return toolTipBox;
 };
 
-const removeToolTip = (image: HTMLImageElement, pageY: number, pageX: number) => {
-  const toolTipBox: Element | null = getElement('.tooltip');
-
-  const mapBottomToTop = Math.floor(image.offsetTop + image.height);
-  const mapToTop = Math.floor(image.offsetTop);
-  const mapLeft = Math.floor(image.offsetLeft);
-  const mapTotalLeft = Math.floor(image.offsetLeft + image.width);
-
-  if (pageY > mapBottomToTop) toolTipBox?.remove();
-  if (pageY < mapToTop) toolTipBox?.remove();
-  if (pageX < mapLeft) toolTipBox?.remove();
-  if (pageX > mapTotalLeft) toolTipBox?.remove();
+const removeToolTip = (tooltip: HTMLDivElement) => {
+  tooltip.remove();
 };
 
-const onMouseMove = (event: MouseEvent, toolTipBox: HTMLDivElement, image: HTMLImageElement) => {
-  toolTipBox.style.top = event.pageY - 15 + 'px';
-  toolTipBox.style.left = event.pageX - 60 + 'px';
-
-  const pageY = event.pageY;
-  const pageX = event.pageX;
-
-  removeToolTip(image, pageY, pageX);
+const onMouseMove = (event: MouseEvent, toolTipBox: HTMLDivElement) => {
+  toolTipBox.style.top = event.pageY + 20 + 'px';
+  toolTipBox.style.left = event.pageX + 20 + 'px';
 };
 
 const onMouseOver = (e: Event): void => {
@@ -54,14 +39,15 @@ const onMouseOver = (e: Event): void => {
 
   const toolTipBox = createToolTip(e.currentTarget as Element);
 
-  toolTipBox.style.top = (e as MouseEvent).pageY - 15 + 'px';
-  toolTipBox.style.left = (e as MouseEvent).pageX - 60 + 'px';
+  toolTipBox.style.top = (e as MouseEvent).pageY + 20 + 'px';
+  toolTipBox.style.left = (e as MouseEvent).pageX + 20 + 'px';
+
+  toolTipBox.addEventListener('mouseleave', () => toolTipBox.remove());
 
   const image = e.currentTarget as HTMLImageElement;
 
-  toolTipBox.addEventListener('mousemove', (event: MouseEvent) => onMouseMove(event, toolTipBox, image));
+  image.addEventListener('mousemove', (event: MouseEvent) => onMouseMove(event, toolTipBox));
 
-  toolTipBox.addEventListener('mouseleave', () => toolTipBox.remove());
+  image.addEventListener('mouseout', () => removeToolTip(toolTipBox))
 };
-
 export default initToolTip;

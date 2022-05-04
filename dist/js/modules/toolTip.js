@@ -14,38 +14,23 @@ const createToolTip = (element) => {
     document.body.appendChild(toolTipBox);
     return toolTipBox;
 };
-const removeToolTip = (image, pageY, pageX) => {
-    const toolTipBox = getElement('.tooltip');
-    const mapBottomToTop = Math.floor(image.offsetTop + image.height);
-    const mapToTop = Math.floor(image.offsetTop);
-    const mapLeft = Math.floor(image.offsetLeft);
-    const mapTotalLeft = Math.floor(image.offsetLeft + image.width);
-    if (pageY > mapBottomToTop)
-        toolTipBox === null || toolTipBox === void 0 ? void 0 : toolTipBox.remove();
-    if (pageY < mapToTop)
-        toolTipBox === null || toolTipBox === void 0 ? void 0 : toolTipBox.remove();
-    if (pageX < mapLeft)
-        toolTipBox === null || toolTipBox === void 0 ? void 0 : toolTipBox.remove();
-    if (pageX > mapTotalLeft)
-        toolTipBox === null || toolTipBox === void 0 ? void 0 : toolTipBox.remove();
+const removeToolTip = (tooltip) => {
+    tooltip.remove();
 };
-const onMouseMove = (event, toolTipBox, image) => {
-    toolTipBox.style.top = event.pageY - 15 + 'px';
-    toolTipBox.style.left = event.pageX - 60 + 'px';
-    const pageY = event.pageY;
-    const pageX = event.pageX;
-    removeToolTip(image, pageY, pageX);
+const onMouseMove = (event, toolTipBox) => {
+    toolTipBox.style.top = event.pageY + 20 + 'px';
+    toolTipBox.style.left = event.pageX + 20 + 'px';
 };
 const onMouseOver = (e) => {
     const toolTipBoxCreated = getElement('.tooltip');
-    const image = e.currentTarget;
-    if (toolTipBoxCreated) {
+    if (toolTipBoxCreated)
         toolTipBoxCreated.remove();
-    }
     const toolTipBox = createToolTip(e.currentTarget);
-    toolTipBox.style.top = e.pageY - 15 + 'px';
-    toolTipBox.style.left = e.pageX - 60 + 'px';
-    toolTipBox.addEventListener('mousemove', (event) => onMouseMove(event, toolTipBox, image));
+    toolTipBox.style.top = e.pageY + 20 + 'px';
+    toolTipBox.style.left = e.pageX + 20 + 'px';
     toolTipBox.addEventListener('mouseleave', () => toolTipBox.remove());
+    const image = e.currentTarget;
+    image.addEventListener('mousemove', (event) => onMouseMove(event, toolTipBox));
+    image.addEventListener('mouseout', () => removeToolTip(toolTipBox));
 };
 export default initToolTip;
