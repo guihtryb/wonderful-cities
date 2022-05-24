@@ -6,6 +6,7 @@ import faqAccordionEventListener from './js/modules/accordion.js';
 import extraParagraphEventListener from './js/modules/extraTextSection.js';
 import modalEventListener from './js/modules/modal.js';
 import initToolTip from './js/modules/toolTip.js';
+import initDropdownMenu from './js/modules/dropdownMenu.js';
 
 const init = (): void => {
   startScrollAnimation();
@@ -23,6 +24,8 @@ const init = (): void => {
   modalEventListener();
 
   initToolTip();
+
+  initDropdownMenu();
 };
 
 window.onload = () => init();
