@@ -1,16 +1,57 @@
-import { getElements } from "../../utils/index.js";
+import { getElements, getElement } from "../../utils/index.js";
 
-export default function initDropdownMenu() {
+export function initDropdownMenu() {
   const dropdownMenus = getElements('[data-dropdown]');
 
+  const events = ['touchstart', 'click'];
+
   dropdownMenus.forEach((menu) => {
-    ['touchstart', 'click'].forEach((userEvent) => {
-      menu.addEventListener(userEvent, handleEvent);
+    events.forEach((userEvent) => {
+      menu.addEventListener(userEvent, handleClick);
     });
   });
 };
 
-function handleEvent(event: Event) {
+function handleClick(event: Event) {
   event.preventDefault();
-  (event.currentTarget as Element).classList.toggle('active-dropdown');
+
+  const dropdown = event.currentTarget as Element;
+
+  const events = ['touchstart', 'click'];
+
+  dropdown.classList.add('active-dropdown');
+
+  handleOutsideClick(dropdown, events, closeDropdown);
 };
+
+function closeDropdown() {
+  const dropdown = getElement('[data-dropdown].active-dropdown');
+
+  dropdown?.classList.remove('active-dropdown');
+}
+
+export function handleOutsideClick(element: Element, events: string[], closeDropdown: Function): void {
+  const html = document.documentElement;
+
+  const outside = 'data-outside';
+
+  if(!element.hasAttribute(outside)) {
+    events.forEach((e) => {
+      html.addEventListener(e, outsideClick);
+    });
+
+    element.setAttribute(outside, '');
+  }
+
+  function outsideClick(event: Event) {
+    if (!element.contains(event.target as Element)) {
+      events.forEach((e) => {
+        html.removeEventListener(e, outsideClick)
+      });
+
+      element.removeAttribute(outside);
+
+      closeDropdown();
+    }
+  }
+}
