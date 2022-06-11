@@ -50,6 +50,7 @@ ul.dropdown-menu {
   color: rgb(168, 161, 161);
 }
 
-.dropdown-menu li a:hover {
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
   color: #FFF;
 }

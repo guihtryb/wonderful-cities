@@ -146,3 +146,11 @@
   margin-top: 1rem;
   font-weight: 700;
 }
+
+.dark-mode .grid-numbers h3 {
+  color: rgb(224, 220, 220);
+}
+
+.dark-mode [data-number] {
+  color: rgb(73, 68, 68);
+}
