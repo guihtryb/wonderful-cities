@@ -13,7 +13,7 @@ function handleClick(event) {
     event.preventDefault();
     const dropdown = event.currentTarget;
     const events = ['touchstart', 'click'];
-    dropdown.classList.add('active-dropdown');
+    dropdown.classList.toggle('active-dropdown');
     handleOutsideClick(dropdown, events, closeDropdown);
 }
 ;

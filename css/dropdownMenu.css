@@ -54,3 +54,10 @@ ul.dropdown-menu {
 .dropdown-menu li a:focus {
   color: #FFF;
 }
+
+
+@media (max-width : 700px) {
+  .dropdown-menu::before {
+    top: 40px;
+  }
+}

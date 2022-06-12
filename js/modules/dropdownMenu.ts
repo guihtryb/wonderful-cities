@@ -19,7 +19,7 @@ function handleClick(event: Event) {
 
   const events = ['touchstart', 'click'];
 
-  dropdown.classList.add('active-dropdown');
+  dropdown.classList.toggle('active-dropdown');
 
   handleOutsideClick(dropdown, events, closeDropdown);
 };
