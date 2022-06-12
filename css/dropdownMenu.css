@@ -58,6 +58,6 @@ ul.dropdown-menu {
 
 @media (max-width : 700px) {
   .dropdown-menu::before {
-    top: 40px;
+    display: none;
   }
 }

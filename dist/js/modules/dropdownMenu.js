@@ -14,10 +14,10 @@ function handleClick(event) {
     const dropdown = event.currentTarget;
     const events = ['touchstart', 'click'];
     dropdown.classList.toggle('active-dropdown');
-    handleOutsideClick(dropdown, events, closeDropdown);
+    handleOutsideClick(dropdown, events, close);
 }
 ;
-function closeDropdown() {
+function close() {
     const dropdown = getElement('[data-dropdown].active-dropdown');
     dropdown === null || dropdown === void 0 ? void 0 : dropdown.classList.remove('active-dropdown');
 }

@@ -12,9 +12,11 @@
   <div class="grid-container">
     <header>
     <nav class="menu">
-      <ul>
+      <button data-menu="button" aria-label="menu" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul data-menu="list" id="menu">
         <li><a href="#cities">CITIES</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#population">POPULATION</a></li>
         <li><a href="#contact">CONTACT</a></li>
         <li data-dropdown>
           <a href="#about">ABOUT</a>
@@ -26,11 +28,11 @@
           </ul>
         </li>
         <li><a data-modal="show">LOGIN &#8594; </a></li>
+        <svg width="25" height="25" class="set-darkmode">
+          <circle cx="12.8" cy="12.5" r="8" stroke-width="3" fill="dark"></circle>
+        </svg>
       </ul>
     </nav>
-      <svg width="25" height="25" class="set-darkmode">
-        <circle cx="12.8" cy="12.5" r="8" stroke-width="3" fill="dark"></circle>
-      </svg>
     </header>
     <section class="grid-section cities" data-animation="scroll" id="cities">
       <h1 class="title"> Wonderful Cities </h1>
@@ -228,7 +230,7 @@
         </dd>
       </dl>
     </section>
-    <section class="grid-section numbers" data-animation="scroll">
+    <section class="grid-section numbers" data-animation="scroll" id="population">
       <h1 class="title">Population</h1>
       <div class="grid-numbers">
         <div class="city-number">

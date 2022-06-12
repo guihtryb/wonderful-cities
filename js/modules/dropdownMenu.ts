@@ -21,10 +21,10 @@ function handleClick(event: Event) {
 
   dropdown.classList.toggle('active-dropdown');
 
-  handleOutsideClick(dropdown, events, closeDropdown);
+  handleOutsideClick(dropdown, events, close);
 };
 
-function closeDropdown() {
+function close() {
   const dropdown = getElement('[data-dropdown].active-dropdown');
 
   dropdown?.classList.remove('active-dropdown');
@@ -37,9 +37,8 @@ export function handleOutsideClick(element: Element, events: string[], closeDrop
 
   if(!element.hasAttribute(outside)) {
     events.forEach((e) => {
-      html.addEventListener(e, outsideClick);
+      html.addEventListener(e, outsideClick)
     });
-
     element.setAttribute(outside, '');
   }
 

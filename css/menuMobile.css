@@ -1,13 +1,14 @@
-[data-menu="button"]  {
+[data-menu="button"] {
   display: none;
 }
 
 @media (max-width : 700px) {
-  .js [data-menu="button"] {
-    display: block;
+  #menu {
+    display: none;
   }
 
   [data-menu="button"] {
+    display: block;
     background: #111;
     border-radius: 4px;
     border: none;
@@ -26,6 +27,7 @@
     z-index: 201;
   }
 
+
   [data-menu="button"]:hover {
     background: #000;
   }
@@ -38,9 +40,14 @@
     width: .6rem;
     background: #FFF;
     box-shadow: 0 4px #FFF, 0 -4px #FFF;
+    transition: transform .3s;
   }
 
-  #menu {
+  [data-menu="button"].active-button::before {
+    transform: rotate(90deg);
+  }
+
+  #menu.active {
     position: absolute;
     z-index: 200;
     background: #0e4d52;
@@ -55,5 +62,40 @@
   ul.dropdown-menu {
     position: static;
     border: none;
+  }
+
+  .dark-mode #menu.active {
+    background: #000;
+  }
+
+  .set-darkmode {
+    position: absolute;
+    top: .5rem;
+    left: 10rem;
+    transition: all ease .4s;
+  }
+
+  .dark-mode .set-darkmode {
+    background: #FF9900;
+    fill: #999;
+    stroke: #000;
+  }
+  
+  .dark-mode .set-darkmode:hover {
+    background: #FF9900;
+    fill: #FFF;
+    stroke: #000;
+  }
+
+  .dark-mode #menu.active li a {
+    color: #888;
+  }
+
+  .dark-mode #menu.active li a:hover {
+    color: #FFF;
+  }
+
+  .dark-mode [data-menu="button"]:hover {
+    background: rgb(10, 10, 10);
   }
 }

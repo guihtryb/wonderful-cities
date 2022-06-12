@@ -1,5 +1,5 @@
 .set-darkmode {
-  background: #111;
+  background: #000;
   border-radius: 100%;
   cursor: pointer;
   fill: #111;
@@ -9,7 +9,6 @@
 }
 
 .set-darkmode:hover {
-  background: #000;
   fill: #000;
 }
 
@@ -18,13 +17,12 @@
 }
 
 .dark-mode .set-darkmode {
-  background: #c5c2c2;
+  background: #d3dad5;
   fill: #c5c2c2;
   stroke: #ff9900;
 }
 
 .dark-mode .set-darkmode:hover {
-  background: #d3d3d3;
   fill: #d3dad5;
   stroke: #ff9900;
 }
