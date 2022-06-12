@@ -50,6 +50,14 @@ ul.dropdown-menu {
   color: rgb(168, 161, 161);
 }
 
-.dropdown-menu li a:hover {
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
   color: #FFF;
+}
+
+
+@media (max-width : 700px) {
+  .dropdown-menu::before {
+    display: none;
+  }
 }

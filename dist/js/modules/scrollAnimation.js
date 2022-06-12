@@ -7,7 +7,7 @@ export const setScrollAnimation = () => {
         const elementIsVisible = elementToTop <= windowPercentage;
         if (elementIsVisible)
             element.classList.add('scroll-active');
-        else
+        else if (element.classList.contains('scroll-active'))
             element.classList.remove('scroll-active');
     });
 };
