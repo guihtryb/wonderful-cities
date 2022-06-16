@@ -18,11 +18,15 @@ const handleClickOutside = () => {
     html.addEventListener('click', (e) => closeMenuOnOutsideClick(e, mobileMenu, menuButton));
 };
 const closeMenuOnOutsideClick = (e, mobileMenu, menuButton) => {
+    var _a;
     const mobileMenuContent = mobileMenu === null || mobileMenu === void 0 ? void 0 : mobileMenu.innerHTML;
+    const loginFormsContent = (_a = getElement('.modal-container')) === null || _a === void 0 ? void 0 : _a.innerHTML;
     const elementClickedContent = e.target.innerHTML;
     const inMenu = mobileMenuContent === null || mobileMenuContent === void 0 ? void 0 : mobileMenuContent.includes(elementClickedContent);
     const notMenuButton = e.target !== menuButton;
-    if (!inMenu && notMenuButton) {
+    const inLoginForms = loginFormsContent === null || loginFormsContent === void 0 ? void 0 : loginFormsContent.includes(elementClickedContent);
+    console.log(inLoginForms);
+    if (!inMenu && !inLoginForms && notMenuButton) {
         mobileMenu === null || mobileMenu === void 0 ? void 0 : mobileMenu.classList.remove('active');
         menuButton === null || menuButton === void 0 ? void 0 : menuButton.classList.remove('active-button');
     }

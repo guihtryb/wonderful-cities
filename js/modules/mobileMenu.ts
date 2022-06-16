@@ -28,12 +28,15 @@ const handleClickOutside = () => {
 
 const closeMenuOnOutsideClick = (e: Event, mobileMenu: Element, menuButton: Element) => {
   const mobileMenuContent = mobileMenu?.innerHTML;
+  const loginFormsContent = getElement('.modal-container')?.innerHTML;
   const elementClickedContent = (e.target as Element).innerHTML;
 
   const inMenu = mobileMenuContent?.includes(elementClickedContent);
   const notMenuButton = e.target !== menuButton;
+  const inLoginForms = loginFormsContent?.includes(elementClickedContent);
 
-  if (!inMenu && notMenuButton) {
+  
+  if (!inMenu && !inLoginForms && notMenuButton) {
     mobileMenu?.classList.remove('active');
     menuButton?.classList.remove('active-button');
   }
