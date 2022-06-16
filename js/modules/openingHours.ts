@@ -2,6 +2,8 @@ import getElement from "../../utils/getElement.js";
 
 type openingInfo = 'days' | 'hours';
 
+const twoMinutes = 120000;
+
 export default function initOpeningHours() {
   const openingElement = getElement('[data-opening-days]') as Element;
 
@@ -11,6 +13,10 @@ export default function initOpeningHours() {
   const opened = isOpened(openingDays, openingHours);
 
   setIsOpened(opened);
+
+  setInterval(() => {
+    setIsOpened(opened);
+  }, twoMinutes)
 
   return null;
 };
@@ -27,16 +33,17 @@ const isOpened = (openingDays: number[], openingHours: number[]): boolean => {
   const now: Date = new Date();
 
   const nowDay = now.getDay();
-  const nowHours = Math.ceil((now.getHours() * 60 + now.getMinutes()) / 60);
+  const nowHours = now.getHours();
 
   const isOpened = openingDays.includes(nowDay)
-    && (nowHours >= openingHours[0] && nowHours <= openingHours[1]);
+    && (nowHours >= openingHours[0] && nowHours < openingHours[1]);
 
   return isOpened;
 };
 
 const setIsOpened = (isOpened: boolean) => {
   const opening = getElement('.opening-status');
+
   if (opening) {
     if (isOpened) {
       opening.classList.add('opened');
