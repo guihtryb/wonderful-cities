@@ -221,23 +221,28 @@ header {
   margin-left: 0.5rem;
   margin-right: 0.3rem;
   background: #d00;
+  border: 2px solid #000;
   border-radius: 20px;
   content: '';
   display: inline-block;
-  height: 10px;
-  width: 10px;
+  height: 9px;
+  width: 9px;
 }
 
 .opening-status {
   color: #d00;
+  display: inline-block;
+  margin: auto;
 }
 
 .opened.opening-status {
-  color: #00FF00;
+  color: #1db41d;
 }
 
 .opened.opening-status::before {
   background: #00FF00;
+  position: relative;
+  top: 1px;
 }
 .copy {
   background: #00565c;

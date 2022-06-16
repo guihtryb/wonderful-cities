@@ -65,7 +65,7 @@
   }
 
   .dark-mode #menu.active {
-    background: #000;
+    background: #ff9900;
   }
 
   .set-darkmode {
@@ -76,23 +76,26 @@
   }
 
   .dark-mode .set-darkmode {
-    background: #FF9900;
-    fill: #999;
-    stroke: #000;
+    background: rgb(231, 226, 226);
+    fill: rgb(231, 226, 226);
+    stroke: #FF9900;
   }
   
   .dark-mode .set-darkmode:hover {
-    background: #FF9900;
+    background: #FFF;
     fill: #FFF;
-    stroke: #000;
   }
 
   .dark-mode #menu.active li a {
-    color: #888;
+    color: #000;
   }
 
   .dark-mode #menu.active li a:hover {
     color: #FFF;
+  }
+
+  .dark-mode .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.247);
   }
 
   .dark-mode [data-menu="button"]:hover {
