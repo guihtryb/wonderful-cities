@@ -9,6 +9,7 @@ import initToolTip from './js/modules/toolTip.js';
 import { initDropdownMenu } from './js/modules/dropdownMenu.js';
 import initNumbersAnimation from './js/modules/numberAnimation.js';
 import initMobileMenu from './js/modules/mobileMenu.js';
+import initOpeningHours from './js/modules/openingHours.js';
 
 const init = (): void => {
   startScrollAnimation();
@@ -32,6 +33,8 @@ const init = (): void => {
   initNumbersAnimation();
 
   initMobileMenu();
+
+  initOpeningHours();
 };
 
 window.onload = () => init();
