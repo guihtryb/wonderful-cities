@@ -12,3 +12,7 @@
   position: absolute;
   z-index: 100;
 }
+
+.dark-mode .tooltip {
+  box-shadow: 0 0 0 2px #ff9900, 0 0 0 6px rgba(0, 0, 0, 0.6);
+}

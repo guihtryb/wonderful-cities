@@ -10,7 +10,7 @@ import { initDropdownMenu } from './js/modules/dropdownMenu.js';
 import initNumbersAnimation from './js/modules/numberAnimation.js';
 import initMobileMenu from './js/modules/mobileMenu.js';
 import initOpeningHours from './js/modules/openingHours.js';
-import addDonationValue from './js/fetchBitcoin.js';
+import addDonationValue from './js/modules/fetchBitcoin.js';
 const init = () => {
     darkModeEventListener();
     startScrollAnimation();
