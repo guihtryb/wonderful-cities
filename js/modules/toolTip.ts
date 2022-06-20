@@ -33,16 +33,7 @@ const onMouseMove = (event: MouseEvent, toolTipBox: HTMLDivElement) => {
 };
 
 const onMouseOver = (e: Event): void => {
-  const toolTipBoxCreated = getElement('.tooltip');
-
-  if (toolTipBoxCreated) toolTipBoxCreated.remove();
-
   const toolTipBox = createToolTip(e.currentTarget as Element);
-
-  toolTipBox.style.top = (e as MouseEvent).pageY + 20 + 'px';
-  toolTipBox.style.left = (e as MouseEvent).pageX + 20 + 'px';
-
-  toolTipBox.addEventListener('mouseleave', () => toolTipBox.remove());
 
   const image = e.currentTarget as HTMLImageElement;
 
@@ -50,4 +41,5 @@ const onMouseOver = (e: Event): void => {
 
   image.addEventListener('mouseout', () => removeToolTip(toolTipBox))
 };
+
 export default initToolTip;

@@ -25,7 +25,6 @@ const closeMenuOnOutsideClick = (e, mobileMenu, menuButton) => {
     const inMenu = mobileMenuContent === null || mobileMenuContent === void 0 ? void 0 : mobileMenuContent.includes(elementClickedContent);
     const notMenuButton = e.target !== menuButton;
     const inLoginForms = loginFormsContent === null || loginFormsContent === void 0 ? void 0 : loginFormsContent.includes(elementClickedContent);
-    console.log(inLoginForms);
     if (!inMenu && !inLoginForms && notMenuButton) {
         mobileMenu === null || mobileMenu === void 0 ? void 0 : mobileMenu.classList.remove('active');
         menuButton === null || menuButton === void 0 ? void 0 : menuButton.classList.remove('active-button');

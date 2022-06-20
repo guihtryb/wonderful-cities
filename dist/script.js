@@ -10,9 +10,10 @@ import { initDropdownMenu } from './js/modules/dropdownMenu.js';
 import initNumbersAnimation from './js/modules/numberAnimation.js';
 import initMobileMenu from './js/modules/mobileMenu.js';
 import initOpeningHours from './js/modules/openingHours.js';
+import addDonationValue from './js/fetchBitcoin.js';
 const init = () => {
-    startScrollAnimation();
     darkModeEventListener();
+    startScrollAnimation();
     setSmoothScrolling();
     citiesTabEventListener();
     faqAccordionEventListener();
@@ -23,5 +24,6 @@ const init = () => {
     initNumbersAnimation();
     initMobileMenu();
     initOpeningHours();
+    addDonationValue();
 };
 window.onload = () => init();
