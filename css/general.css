@@ -213,6 +213,18 @@ header {
   width: 20px;
 }
 
+.bitcoin-donation-value {
+  background-color: #00FF00;
+  padding: 0.3rem;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: medium;
+}
+
+.dark-mode .bitcoin-donation-value {
+  color: #000;
+}
+
 .opening-arrow {
   margin-left: 2rem;
 }
